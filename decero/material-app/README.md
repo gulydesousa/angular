@@ -25,21 +25,21 @@ npm install --save-dev json-server@0.17.4
 
 
 ## material-app: Development server
-1. Clonar el proyecto
+- Clonar el proyecto
 
-2. Instalar en local
+- Instalar en local
 
 ```sh
 npm install
 ```
 
-3. Levantar el backend: servicio de heroes en local
+- Levantar el backend: servicio de heroes en local
 
 ```sh
 npm run backend
 ```
 
-4. Ejecutar la app 
+- Ejecutar la app 
 
 ```sh
 sh npm start
@@ -51,7 +51,7 @@ o bien
 sh ng serve -o
 ```
 
-Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 
 
