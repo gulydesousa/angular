@@ -25,6 +25,45 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Instalación
+- ✨Magic ✨
+
+Instalar json-server@0.17.4
+
+```sh
+npm install --save-dev json-server@0.17.4
+```
+>El comando que se necesita para ejecutar json-server es
+>`npx json-server data/db.json`
+>Lo hemos dejado configurado en [package.json]
+
+
+
+## material-app
+## Develop
+1. Clonar el proyecto
+
+2. Instalar en local
+
+```sh
+npm install
+```
+
+3. Levantar el backend: servicio de heroes en local
+
+```sh
+npm run backend
+```
+
+4. Ejecutar la app 
+
+```sh npm start```
+ 
+o bien 
+
+```sh ng serve -o``
+
+
+
+
