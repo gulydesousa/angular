@@ -1,5 +1,5 @@
 # MapsMaterial
-> - ´LocalStorage´
+> - `LocalStorage`
 
 ## Development server
 
