@@ -27,7 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 
 ## Instalación
-- ✨Magic ✨
 
 Instalar json-server@0.17.4
 
@@ -39,9 +38,9 @@ npm install --save-dev json-server@0.17.4
 >Lo hemos dejado configurado en [package.json]
 
 
+✨✨✨ Heroes: material-app ✨✨✨
 
-## material-app
-## Develop
+## material-app: Develop
 1. Clonar el proyecto
 
 2. Instalar en local
@@ -58,11 +57,15 @@ npm run backend
 
 4. Ejecutar la app 
 
-```sh npm start```
- 
+```sh
+sh npm start
+```
+
 o bien 
 
-```sh ng serve -o``
+```sh
+sh ng serve -o
+```
 
 
 
