@@ -1,0 +1,33 @@
+<mat-card class="my-card">
+  <mat-card-header class="my-cardheader">
+    <mat-toolbar color="primary">
+      <span class="my-cardheader-title">Skills</span>
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content class="my-cardcontent">
+    <div class="p-d-flex p-flex-column p-fluid">
+      <mat-form-field class="p-fluid">
+        <mat-label>Skill 1</mat-label>
+        <input matInput placeholder="Skill#1" value="" maxlength="50">
+      </mat-form-field>
+
+      <mat-form-field class="p-fluid">
+        <mat-label>Skill 2</mat-label>
+        <input matInput placeholder="Skill#2" value="" maxlength="50">
+      </mat-form-field>
+
+      <mat-form-field class="p-fluid">
+        <mat-label>Skill 3</mat-label>
+        <input matInput placeholder="Skill#3" value="" maxlength="50">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <div class="mat-mdc-card-content">
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-button (click)="stepper.previous()" color="primary">Back</button>
+      <button mat-button (click)="stepper.next()" color="primary">Next</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

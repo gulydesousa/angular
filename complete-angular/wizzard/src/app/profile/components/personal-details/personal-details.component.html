@@ -1,0 +1,27 @@
+<mat-card class="my-card">
+  <mat-card-header class="my-cardheader">
+    <mat-toolbar color="primary">
+      <span class="my-cardheader-title">Personal Details</span>
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content class="my-cardcontent">
+    <div class="p-d-flex p-flex-column p-fluid">
+      <mat-form-field class="p-fluid">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Your first name here" value="" required>
+      </mat-form-field>
+
+      <mat-form-field class="p-fluid">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Your last name here" value="" required>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <div class="mat-mdc-card-content">
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-button (click)="stepper.next()" color="primary">Next</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

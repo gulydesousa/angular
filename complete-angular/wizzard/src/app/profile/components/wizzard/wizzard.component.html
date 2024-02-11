@@ -1,0 +1,32 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step >
+    <ng-template matStepLabel>Step 1</ng-template>
+    <ng-template matStepContent>
+      <personal-details [stepper]="stepper"></personal-details>
+    </ng-template>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 2</ng-template>
+    <ng-template matStepContent>
+      <contact-details [stepper]="stepper"></contact-details>
+    </ng-template>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 3</ng-template>
+    <ng-template matStepContent>
+      <skills [stepper]="stepper"></skills>
+    </ng-template>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Step 4</ng-template>
+    <ng-template matStepContent>
+      <work-experience [stepper]="stepper"></work-experience>
+    </ng-template>
+  </mat-step>
+
+  <!-- Agrega más pasos según sea necesario -->
+</mat-horizontal-stepper>

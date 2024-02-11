@@ -1,0 +1,19 @@
+<mat-card class="my-card">
+  <mat-card-header class="my-cardheader" >
+    <mat-toolbar color="accent">
+      <span class="my-cardheader-title">Wizzard</span>
+    </mat-toolbar>
+   </mat-card-header>
+
+   <mat-card-content class="my-cardcontent">
+    <p>
+      Wizzard finished
+    </p>
+  </mat-card-content>
+<div class="mat-mdc-card-content">
+  <mat-divider></mat-divider>
+  <mat-card-actions align="end">
+    <button mat-button [routerLink]="['/welcome']" color="warn">Close</button>
+  </mat-card-actions>
+</div>
+</mat-card>
