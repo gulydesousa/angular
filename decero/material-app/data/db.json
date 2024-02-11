@@ -22,7 +22,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El ssss jjj",
+      "alt_img": null
     },
     {
       "id": "dc-flash",
@@ -174,6 +175,15 @@
       "publisher": "DC Comics",
       "alter_ego": "sdfsdf",
       "first_appearance": "sdfsdf",
+      "characters": "sdfsdf",
+      "alt_img": ""
+    },
+    {
+      "id": "p243dMB",
+      "superhero": "sdfsdf",
+      "publisher": "DC Comics",
+      "alter_ego": "sdf",
+      "first_appearance": "sdfsd",
       "characters": "sdfsdf",
       "alt_img": ""
     }
