@@ -1,0 +1,5 @@
+export { Person } from './Persona'
+export { Employee } from './Persona'
+export { Hero } from './Hero'
+export { iva } from './Persona'
+export { rtf } from './Persona'
