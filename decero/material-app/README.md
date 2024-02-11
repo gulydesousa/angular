@@ -1,6 +1,7 @@
 # MaterialApp
 ## _Angular de cero a experto: (Angular 17+)_
-> Reactive Forms: `Angular Material 17.1.2`, servidor: `json-server@0.17.4`
+> Reactive Forms: `Angular Material 17.1.2`
+> Servidor: `json-server@0.17.4`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
 
