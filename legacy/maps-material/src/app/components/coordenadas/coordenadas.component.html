@@ -1,0 +1,28 @@
+<div class="main-container">
+  <h1>Coordenadas</h1>
+  <form class="example-form" [formGroup]="forma">
+    <mat-form-field class="example-full-width">
+      <mat-label>Titulo</mat-label>
+      <input matInput placeholder="titulo" formControlName="titulo" name="titulo" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripcion</mat-label>
+      <input matInput placeholder="descripcion" formControlName="desc" name="descripcion" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Latitud</mat-label>
+      <input matInput placeholder="lat" formControlName="lat" name="lat" required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Longitud</mat-label>
+      <input matInput placeholder="lng" formControlName="lng" name="lng" required />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="guardarCambios()">
+      Enviar
+    </button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">
+      Cancelar
+    </button>
+  </form>
+</div>

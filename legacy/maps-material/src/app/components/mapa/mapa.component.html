@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title>Mapa</mat-card-title>
+
+  <mat-card-content>
+    <mat-selection-list role="list" #selectionList>
+      <mat-list-option role="listitem" *ngFor="let item of marcadores; let i = index" [value]="i"
+        matTooltip="{{ item.titulo }}: {{ item.desc }}">
+        <button mat-icon-button color="primary" (click)="onEditButtonClick($event, i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <strong>lat:</strong> {{ item.lat }} - <strong>lng: </strong>{{ item.lng }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>
+
+<button mat-raised-button color="primary" (click)="agregarMarcador()">
+  Agregar
+</button>
+
+<button mat-raised-button color="warn" (click)="deleteSelectedItems(selectionList)">
+  Borrar
+</button>
