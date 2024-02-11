@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Publisher, Hero } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 
-//import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-new-page',
@@ -66,10 +66,7 @@ export class NewPageComponent implements OnInit {
         this.heroForm.reset( hero );
         return;
       });
-
   }
-
-
 
   onSubmit():void {
 
@@ -91,20 +88,24 @@ export class NewPageComponent implements OnInit {
       });
   }
 
-  onDeleteHero() {/*
+  onDeleteHero() {
     if ( !this.currentHero.id ) throw Error('Hero id is required');
 
-    const dialogRef = this.dialog.open( ConfirmDialogComponent, {
-      data: this.heroForm.value
-    });
+    //Enviar el heroe al dialogo
+    const dialogRef = this.dialog.open( ConfirmDialogComponent
+                                    , {data: this.heroForm.value});
 
+    //Suscribirse para escuchar la respuesta del botón
     dialogRef.afterClosed()
+      //ponemos un pipe para interceptar la respuesta del botón
       .pipe(
-        filter( (result: boolean) => result ),
-        switchMap( () => this.heroesService.deleteHeroById( this.currentHero.id )),
-        filter( (wasDeleted: boolean) => wasDeleted ),
+        filter( (result: boolean) => result===true ), //filtra el resultado del botón
+        switchMap( () => this.heroesService.deleteHeroById( this.currentHero.id )), //Si es true, elimina el heroe
+        filter( (wasDeleted: boolean) => wasDeleted===true ), //Si  no fue eliminado, no hago nada
       )
+      //Si el pipe no ha interceptado la respuesta, redireccionamos
       .subscribe(() => {
+        this.showSnackbar(`Superhero ${this.currentHero.superhero} eliminado`);
         this.router.navigate(['/heroes']);
       });
 
@@ -117,15 +118,11 @@ export class NewPageComponent implements OnInit {
     //       this.router.navigate(['/heroes']);
     //   })
     // });
-*/
+
   }
 
-
   showSnackbar( message: string ):void {
-    this.snackbar.open( message, 'done', {
-      duration: 2500,
-    })
-
+    this.snackbar.open( message, 'done', {duration: 2500,});
   }
 
 }
