@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,4 +10,12 @@ import { Component } from '@angular/core';
 
 export class WelcomeComponent {
 
+  constructor(@Inject(Router) private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  goWizzard() {
+    this.router.navigate(['/profile/wizzard']);
+  }
 }

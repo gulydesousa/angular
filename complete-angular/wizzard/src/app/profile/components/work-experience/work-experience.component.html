@@ -27,7 +27,7 @@
     <mat-divider></mat-divider>
     <mat-card-actions align="end">
      <button mat-button (click)="stepper.previous()" color="primary">Back</button>
-       <button mat-button [routerLink]="['/wizzard-finished']" color="warn">Finish</button>
+       <button mat-button (click)="goWizzardFinished()" color="warn">Finish</button>
     </mat-card-actions>
   </div>
 </mat-card>

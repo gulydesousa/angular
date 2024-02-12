@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wizzard-finished',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './wizzard-finished.component.scss'
 })
 export class WizzardFinishedComponent {
+
+  constructor(@Inject(Router) private router: Router) { }
+
+
+  ngOnInit() {
+  }
+
+  goWelcome(){
+    this.router.navigate(['welcome']);
+  }
 
 }
