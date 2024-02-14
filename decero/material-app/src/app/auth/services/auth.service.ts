@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environments } from '../../../environments/environments';
 import { User } from '../interfaces/user.interface';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 
@@ -41,5 +41,31 @@ export class AuthService {
   logout(): void {
     this.user = undefined;
     localStorage.removeItem('token');
+  }
+
+
+  checkAuthentication(): Observable<boolean> {
+    console.log('checkAuthentication');
+    if (typeof localStorage === 'undefined')
+      return of(false);
+
+    if (!localStorage.getItem('token'))
+      return of(false); //of es un operador que crea un observable con un valor inicial
+
+    const token = localStorage.getItem('token');
+
+
+    //1. Hacer una peticion al servidor para verificar si el token es valido
+    //2. Si el token es valido retornar true
+    //3. Si el token no es valido retornar false
+    //4. Si la peticion falla retornar false
+    return this.http.get<User>(`${this.url}/users/${token}`)
+      .pipe(
+        tap(user => this.user = user),
+        map(user => !!user),//!user es true si user es undefined o null
+        //!!user es false si user es undefined o null
+        //Entonces aqui !!user es true si user es un objeto
+        catchError(() => of(false))
+      );
   }
 }
