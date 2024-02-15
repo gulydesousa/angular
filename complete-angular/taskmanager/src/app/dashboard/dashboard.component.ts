@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dashboard',
@@ -6,6 +6,33 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.scss'
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit
+{
+  // Propiedades del componente
+  //deberían ser publicas para que puedan ser accedidas desde el template
+  //de ser privadas no se podrian acceder desde el template
+  public Designation: string = "";
+  public UserName: string = "";
+  public NoOfTeamMembers: number = 0;
+  public TotalCostOfAllProjects: number = 0;
+  public PendingTasks: number = 0;
+  public UpcomingProjects: number = 0;
+  public ProjectCost: number = 0;
+  public CurrentExpenditure: number = 0;
+  public AvailableFunds: number = 0;
+
+  //Inicializa las propiedades del componente
+  ngOnInit(): void {
+    //En aplicaciones reales estos valores se obtendrían de una API, base de datos, etc.
+    this.Designation = "Team Leader";
+    this.UserName = "John Doe";
+    this.NoOfTeamMembers = 67;
+    this.TotalCostOfAllProjects = 240;
+    this.PendingTasks = 15;
+    this.UpcomingProjects = 2;
+    this.ProjectCost = 211;
+    this.CurrentExpenditure = 198;
+    this.AvailableFunds = 189;
+  }
 
 }

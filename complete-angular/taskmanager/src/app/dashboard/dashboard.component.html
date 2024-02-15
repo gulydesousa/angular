@@ -1,1 +1,109 @@
-<p>dashboard works!</p>
+<div class="nav-scroller py-1 mb-3 border-bottom">
+  <nav aria-label="breadcrumb fs-6">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+  </nav>
+
+  <div class="display-6 fst-italic pb-3"> Dashboard</div>
+
+  <!-- Crear unlayout con bootstrap con una columna de 3 otra de 6 y la ultima de 3 -->
+  <div class="row">
+    <div class="col-3">
+      <div class="p-3 mb-3 bg-light rounded">
+        <!-- Layout con bootstrap que ocupe 11 columnas dentro de este div y que tenga dos filas, una para el encabezado y otra par el cuerpo -->
+        <div class="row">
+          <div class="col-12">
+            <h4 class="fst-italic text-center">{{this.Designation}}</h4>
+            <!-- Display user-image alineada al centro -->
+            <div class="d-flex justify-content-center">
+              <img src="assets/images/user-icon.jpg" class="rounded-circle" alt="user-image" width="100" height="100">
+            </div>
+            <!-- Mostar el user name -->
+            <h5 class="fst-italic text-center">{{this.UserName}}</h5>
+            <!-- Team summary como un subtitulo en upper case-->
+            <h6 class="text-center text-uppercase">Team Summary</h6>
+            <!-- Mostrar "No Team Members" en una fila blanca con el valor en un badge-->
+            <div class="d-flex justify-content-between bg-white">
+              <div class="p-2 text-uppercase">No Of Team Members</div>
+              <div class="p-2 ">
+                <span class="badge bg-primary">{{this.NoOfTeamMembers}}</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between bg-white">
+              <div class="p-2 text-uppercase">Total cost of all projects</div>
+              <div class="p-2 ">
+                <span class="badge bg-primary">$ {{this.TotalCostOfAllProjects}}</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between bg-white">
+              <div class="p-2 text-uppercase">Pending tasks</div>
+              <div class="p-2 ">
+                <span class="badge bg-secondary">{{this.PendingTasks}}</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between bg-white">
+              <div class="p-2 text-uppercase">Upcoming Projects</div>
+              <div class="p-2 ">
+                <span class="badge bg-warning">{{this.UpcomingProjects}}</span>
+              </div>
+            </div>
+
+            <h6 class="col-12 p-2 text-uppercase text-center">Clients</h6>
+            <!-- Lista estática de tres clientes en un ul -->
+            <div class="p-2 col-12  bg-white">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Client 1</li>
+                <li class="list-group-item">Client 2</li>
+                <li class="list-group-item">Client 3</li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="p-3 mb-3 bg-light rounded">
+<div class="d-flex justify-content-between">
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+
+
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action1</a></li>
+          <li><a class="dropdown-item" href="#">Another action1</a></li>
+          <li><a class="dropdown-item" href="#">Something else here1</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="p-3 mb-3 bg-light rounded">
+      <h4 class="fst-italic">Sidebar</h4>
+      <p class="mb-0">Sidebar content</p>
+    </div>
+  </div>
+</div>
+
