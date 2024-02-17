@@ -8,102 +8,253 @@
 
   <div class="display-6 fst-italic pb-3"> Dashboard</div>
 
-  <!-- Crear unlayout con bootstrap con una columna de 3 otra de 6 y la ultima de 3 -->
-  <div class="row">
-    <div class="col-3">
-      <div class="p-3 mb-3 bg-light rounded">
-        <!-- Layout con bootstrap que ocupe 11 columnas dentro de este div y que tenga dos filas, una para el encabezado y otra par el cuerpo -->
-        <div class="row">
-          <div class="col-12">
-            <h4 class="fst-italic text-center">{{this.Designation}}</h4>
-            <!-- Display user-image alineada al centro -->
-            <div class="d-flex justify-content-center">
-              <img src="assets/images/user-icon.jpg" class="rounded-circle" alt="user-image" width="100" height="100">
-            </div>
-            <!-- Mostar el user name -->
-            <h5 class="fst-italic text-center">{{this.UserName}}</h5>
-            <!-- Team summary como un subtitulo en upper case-->
-            <h6 class="text-center text-uppercase">Team Summary</h6>
-            <!-- Mostrar "No Team Members" en una fila blanca con el valor en un badge-->
-            <div class="d-flex justify-content-between bg-white">
-              <div class="p-2 text-uppercase">No Of Team Members</div>
-              <div class="p-2 ">
-                <span class="badge bg-primary">{{this.NoOfTeamMembers}}</span>
+  <div class="">
+    <!-- Crear unlayout con bootstrap con una columna de 3 otra de 6 y la ultima de 3 -->
+    <div class="row">
+      <div class="col-3">
+        <div class="p-2 mb-2 bg-light rounded columnFit">
+          <!-- Layout con bootstrap que ocupe 11 columnas dentro de este div y que tenga dos filas, una para el encabezado y otra par el cuerpo -->
+          <div class="row">
+            <div class="col-12">
+              <h4 class="fst-italic text-center">{{this.Designation}}</h4>
+              <!-- Display user-image alineada al centro -->
+              <div class="d-flex justify-content-center">
+                <img src="assets/images/user-icon.jpg" class="rounded-circle" alt="user-image" width="100" height="100">
+              </div>
+              <!-- Mostar el user name -->
+              <h5 class="fst-italic text-center">{{this.UserName}}</h5>
+              <!-- Team summary como un subtitulo en upper case-->
+              <h6 class="text-center text-uppercase">Team Summary</h6>
+              <!-- Mostrar "No Team Members" en una fila blanca con el valor en un badge-->
+              <div class="d-flex justify-content-between bg-white">
+                <div class="p-2 text-uppercase">No Of Team Members</div>
+                <div class="p-2 ">
+                  <span class="badge bg-primary">{{this.NoOfTeamMembers}}</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between bg-white">
+                <div class="p-2 text-uppercase">Total cost of all projects</div>
+                <div class="p-2 ">
+                  <span class="badge bg-primary">$ {{this.TotalCostOfAllProjects}}</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between bg-white">
+                <div class="p-2 text-uppercase">Pending tasks</div>
+                <div class="p-2 ">
+                  <span class="badge bg-secondary">{{this.PendingTasks}}</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between bg-white">
+                <div class="p-2 text-uppercase">Upcoming Projects</div>
+                <div class="p-2 ">
+                  <span class="badge bg-warning">{{this.UpcomingProjects}}</span>
+                </div>
+              </div>
+
+              <h6 class="col-12 p-2 text-uppercase text-center">Clients</h6>
+              <!-- Lista estática de tres clientes en un ul -->
+              <div class="p-2 col-12  bg-white">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Client 1</li>
+                  <li class="list-group-item">Client 2</li>
+                  <li class="list-group-item">Client 3</li>
+                </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="d-flex justify-content-between bg-white">
-              <div class="p-2 text-uppercase">Total cost of all projects</div>
-              <div class="p-2 ">
-                <span class="badge bg-primary">$ {{this.TotalCostOfAllProjects}}</span>
-              </div>
-            </div>
+      <!-- Cuerpo cental -->
+      <div class="col-6">
+        <div class="p-2 mb-2 bg-light rounded  columnFit">
+          <!-- Dropdowns -->
+          <div class="d-flex justify-content-between pb-2">
 
-            <div class="d-flex justify-content-between bg-white">
-              <div class="p-2 text-uppercase">Pending tasks</div>
-              <div class="p-2 ">
-                <span class="badge bg-secondary">{{this.PendingTasks}}</span>
-              </div>
-            </div>
-
-            <div class="d-flex justify-content-between bg-white">
-              <div class="p-2 text-uppercase">Upcoming Projects</div>
-              <div class="p-2 ">
-                <span class="badge bg-warning">{{this.UpcomingProjects}}</span>
-              </div>
-            </div>
-
-            <h6 class="col-12 p-2 text-uppercase text-center">Clients</h6>
-            <!-- Lista estática de tres clientes en un ul -->
-            <div class="p-2 col-12  bg-white">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Client 1</li>
-                <li class="list-group-item">Client 2</li>
-                <li class="list-group-item">Client 3</li>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Project A
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Project A</a></li>
+                <li><a class="dropdown-item" href="#">Project B</a></li>
+                <li><a class="dropdown-item" href="#">Project C</a></li>
               </ul>
             </div>
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                2024
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">2024</a></li>
+                <li><a class="dropdown-item" href="#">2023</a></li>
+                <li><a class="dropdown-item" href="#">2022</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-2 bg-white">
+            <!-- Primer bloque central -->
+            <div class="p-2 mb-3 bg-body-tertiary rounded">
+              <h6 class="fst-italic text-uppercase  text-center">Project Briefing</h6>
+            </div>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Project Cost</td>
+                  <td><strong>$ {{this.ProjectCost}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Current Expenditure</td>
+                  <td><strong>{{this.CurrentExpenditure}}</strong></td>
+                </tr>
+                <tr>
+                  <td>Available Funds</td>
+                  <td><strong>{{this.AvailableFunds}}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Segundo bloque central -->
+            <div class="p-2 mb-3 bg-body-tertiary rounded">
+              <h6 class="fst-italic text-uppercase  text-center">Team Members Summary</h6>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Region</th>
+                  <th scope="col">Team Members Count</th>
+                  <th scope="col">Teamporary Unavailable Members</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>East</strong></td>
+                  <td>10</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>West</strong></td>
+                  <td>10</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>North</strong></td>
+                  <td>10</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>South</strong></td>
+                  <td>10</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+      <!--Columna de la derecha  -->
+      <div class="col-3">
+        <div class="p-2 mb-2 bg-light rounded columnFit">
+          <div class="p-2 bg-white">
+            <!-- Primer bloque derecha -->
+            <div class="p-2 mb-3 bg-body-tertiary rounded">
+              <h6 class="fst-italic text-uppercase  text-center">Team Members</h6>
+            </div>
+            <!-- Acordeon para los empleados -->
+            <div class="accordion" id="teamMembersAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="eastHeading">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#eastCollapse" aria-expanded="true" aria-controls="eastCollapse">
+                    East
+                  </button>
+                </h2>
+                <div id="eastCollapse" class="accordion-collapse collapse show" aria-labelledby="eastHeading"
+                  data-bs-parent="#teamMembersAccordion">
+                  <div class="accordion-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Ford</td>
+                          <td><i class="fas fa-phone"></i> Available</td>
+                        </tr>
+                        <tr>
+                          <td>10</td>
+                          <td>Miller</td>
+                          <td><i class="fas fa-phone"></i> Available</td>
+                        </tr>
+                        <tr>
+                          <td>11</td>
+                          <td>James</td>
+                          <td><i class="fas fa-clock"></i> Busy</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="southHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#southCollapse" aria-expanded="false" aria-controls="southCollapse">
+                    South
+                  </button>
+                </h2>
+                <div id="southCollapse" class="accordion-collapse collapse" aria-labelledby="southHeading"
+                  data-bs-parent="#teamMembersAccordion">
+                  <div class="accordion-body">
+                    <!-- Content for South region -->
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="westHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#westCollapse" aria-expanded="false" aria-controls="westCollapse">
+                    West
+                  </button>
+                </h2>
+                <div id="westCollapse" class="accordion-collapse collapse" aria-labelledby="westHeading"
+                  data-bs-parent="#teamMembersAccordion">
+                  <div class="accordion-body">
+                    <!-- Content for West region -->
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="northHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#northCollapse" aria-expanded="false" aria-controls="northCollapse">
+                    North
+                  </button>
+                </h2>
+                <div id="northCollapse" class="accordion-collapse collapse" aria-labelledby="northHeading"
+                  data-bs-parent="#teamMembersAccordion">
+                  <div class="accordion-body">
+                    <!-- Content for North region -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="col-6">
-    <div class="p-3 mb-3 bg-light rounded">
-<div class="d-flex justify-content-between">
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-
-
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action1</a></li>
-          <li><a class="dropdown-item" href="#">Another action1</a></li>
-          <li><a class="dropdown-item" href="#">Something else here1</a></li>
-        </ul>
-      </div>
-    </div>
-
-
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="p-3 mb-3 bg-light rounded">
-      <h4 class="fst-italic">Sidebar</h4>
-      <p class="mb-0">Sidebar content</p>
-    </div>
-  </div>
-</div>
-

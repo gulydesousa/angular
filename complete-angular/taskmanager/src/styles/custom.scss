@@ -1,0 +1,20 @@
+.accordion-button:not(.collapsed) {
+  --bs-accordion-active-bg: var(--bs-gray-300);
+}
+
+.accordion {
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem var(--bs-gray-500); // Cambia los valores según tus necesidades
+}
+
+.columnFit {
+  min-height: 100%;
+}
+
+
+.col-3 {
+  min-width: 300px;
+}
+
+.col-6 {
+  min-width: 400px;
+}
