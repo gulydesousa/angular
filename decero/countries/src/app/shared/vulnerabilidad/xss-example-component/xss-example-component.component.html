@@ -1,0 +1,8 @@
+<!-- En este ejemplo, el método updateHtml() actualiza el contenido HTML
+  de un div con la entrada del usuario sin realizar ninguna sanitización.
+  Esto puede permitir que se inserte contenido malicioso, como scripts,
+  lo que podría resultar en una vulnerabilidad XSS. -->
+
+<div [innerHtml]="unsafeHtml"></div>
+<input type="text" [(ngModel)]="userInput" />
+<button (click)="updateHtml()">Update HTML</button>

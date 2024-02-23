@@ -21,6 +21,12 @@ export class DashboardComponent implements OnInit
   public CurrentExpenditure: number = 0;
   public AvailableFunds: number = 0;
 
+  Clients: string[] = ["ABC Infotech Ltd.", "DEF Software Solutions", "GHI Industries"];
+  Projects: string[] = ["Project A", "Project B", "Project C", "Project D"];
+  Years: number[] = [2019, 2020, 2021, 2022, 2023];
+  TeamMembersSummary: any[] = [];
+  TeamMembers: any[] = [];
+
   //Inicializa las propiedades del componente
   ngOnInit(): void {
     //En aplicaciones reales estos valores se obtendrían de una API, base de datos, etc.
