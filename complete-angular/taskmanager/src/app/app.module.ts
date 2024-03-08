@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    AboutComponent
+    AboutComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
