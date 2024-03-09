@@ -1,0 +1,76 @@
+<div class="display-6 fst-italic pb-3 d-flex justify-content-between">
+  Projects
+</div>
+
+<nav aria-label="breadcrumb fs-6">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Projects</li>
+  </ol>
+</nav>
+
+<div class="p-3 card mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Inicio</th>
+        <th>Equipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.id }}</td>
+        <td>{{ project.name | uppercase }}</td>
+        <td>{{ project.dateOfStart | date:"longDate" }}</td>
+        <td>{{ project.teamSize }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+  Add Project
+</button>
+
+<!-- Add Project Modal -->
+<div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProjectModalLabel">New Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Add project form -->
+        <form>
+          <div class="form-group">
+            <label for="projectId">ID</label>
+            <input type="text" class="form-control" id="projectId" [(ngModel)]="newProject.id" name="projectId">
+          </div>
+
+          <div class="form-group">
+            <label for="projectName">Nombre</label>
+            <input type="text" class="form-control" id="projectName" [(ngModel)]="newProject.name" name="projectName">
+          </div>
+
+          <div class="form-group">
+            <label for="projectDate">Inicio</label>
+            <input type="date" class="form-control" id="projectDate" [(ngModel)]="newProject.dateOfStart" name="projectDate">
+          </div>
+
+          <div class="form-group">
+            <label for="projectTeamSize">Equipo</label>
+            <input type="number" class="form-control" id="projectTeamSize" [(ngModel)]="newProject.teamSize" name="projectTeamSize">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #myModalClose class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addProjectClick()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

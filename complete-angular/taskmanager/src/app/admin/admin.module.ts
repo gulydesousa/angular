@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { FilterPipe } from '../pipes/filter.pipe';
 import { DashboardService } from '../services/dashboard.service';
+import { ProjectsComponent } from './projects/projects.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,15 +14,18 @@ import { DashboardService } from '../services/dashboard.service';
     DashboardComponent,
     AboutComponent,
     MyProfileComponent,
-    FilterPipe
+    ProjectsComponent
   ],
+
   imports: [
     CommonModule,
+    FormsModule
   ],
   exports: [
     DashboardComponent,
     AboutComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ProjectsComponent
   ],
   providers: [DashboardService]
 })
