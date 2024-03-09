@@ -12,18 +12,14 @@ import { TMStatus } from '../../enums/tm-status.enum';
 
 export class DashboardComponent implements OnInit {
 
-regions: RegionName[] = [];
-dashboardRegions: DashboardRegion[] = [];
-TMStatus = TMStatus;
+  regions: RegionName[] = [];
+  dashboardRegions: DashboardRegion[] = [];
+  TMStatus = TMStatus;
 
+  //Inyecta el servicio DashboardService
+  constructor(private dashboardService: DashboardService) {
 
-
-constructor(private dashboardService: DashboardService)
-{
-  //Todas las regiones en el enum RegionName
-  this.regions = Object.values(RegionName).filter(value => typeof value === 'string') as RegionName[];
-  this.dashboardRegions = this.dashboardService.GetRegions(true);
-}
+  }
 
 
   // Propiedades del componente
@@ -46,7 +42,7 @@ constructor(private dashboardService: DashboardService)
   Projects: string[] = [];
   Years: number[] = [];
 
-  
+
   ahora: Date = new Date();
 
   //Inicializa las propiedades del componente
@@ -58,17 +54,24 @@ constructor(private dashboardService: DashboardService)
     this.TotalCostOfAllProjects = 240;
     this.PendingTasks = 15;
     this.UpcomingProjects = 0.2;
-
-
     this.ClientsInit();
     this.ProjectsInit();
     this.YearsInit();
-
     this.ProjectBriefInit("Project A");
 
+    this.initDashboard();
   }
 
 
+  /**
+   * Initializes the dashboard component.
+   * Retrieves the regions from the RegionName enum and calls the GetRegions method of the dashboard service.
+   */
+  private initDashboard(): void {
+    //Todas las regiones en el enum RegionName
+    this.regions = Object.values(RegionName).filter(value => typeof value === 'string') as RegionName[];
+    this.dashboardRegions = this.dashboardService.GetRegions(true);
+  }
 
 
   private ClientsInit() {
@@ -76,7 +79,7 @@ constructor(private dashboardService: DashboardService)
   }
 
   private ProjectBriefInit(projectName: string) {
-   //Arreglo de ProjectBriefs para los Projects
+    //Arreglo de ProjectBriefs para los Projects
     let projectBriefs = [
       { name: "Project A", cost: 10000, expenditure: 45 },
       { name: "Project B", cost: 2200, expenditure: 145 },

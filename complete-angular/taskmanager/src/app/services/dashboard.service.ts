@@ -3,9 +3,7 @@ import { DashboardRegion } from '../classes/dashboard-region.class';
 import { RegionName } from '../enums/region-names.enum';
 import { TeamMembersService } from './team-members.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 /**
  * Service for managing regions.
  */
