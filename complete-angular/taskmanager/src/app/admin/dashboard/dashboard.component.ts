@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { RegionName } from '../../enums/region-names.enum';
+import { DashboardService } from '../../services/dashboard.service';
+import { DashboardRegion } from '../../classes/dashboard-region.class';
+import { TMStatus } from '../../enums/tm-status.enum';
 
 @Component({
   selector: 'dashboard',
@@ -9,6 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DashboardComponent implements OnInit {
+
+regions: RegionName[] = [];
+dashboardRegions: DashboardRegion[] = [];
+TMStatus = TMStatus;
+
+
+
+constructor(private dashboardService: DashboardService)
+{
+  //Todas las regiones en el enum RegionName
+  this.regions = Object.values(RegionName).filter(value => typeof value === 'string') as RegionName[];
+  this.dashboardRegions = this.dashboardService.GetRegions(true);
+}
+
+
   // Propiedades del componente
   //deberían ser publicas para que puedan ser accedidas desde el template
   //de ser privadas no se podrian acceder desde el template
@@ -29,10 +46,7 @@ export class DashboardComponent implements OnInit {
   Projects: string[] = [];
   Years: number[] = [];
 
-  TeamMembersSummary: any[] = [];
-  TeamMembers: any[] = [];
-  Regions: any[] = [];
-
+  
   ahora: Date = new Date();
 
   //Inicializa las propiedades del componente
@@ -49,32 +63,13 @@ export class DashboardComponent implements OnInit {
     this.ClientsInit();
     this.ProjectsInit();
     this.YearsInit();
-    this.RegionsInit();
 
     this.ProjectBriefInit("Project A");
-  }
-
-  private RegionsInit() {
-    this.Regions = [
-      { name: "East", display: false, card: true},
-      { name: "West", display: true, card: false },
-      { name: "North", display: true, card: false },
-      { name: "South", display: true, card: true }
-    ];
-
-    this.TeamMembersInit();
-
-    this.TeamMembersSummaryInit();
 
   }
 
-  private TeamMembersSummaryInit() {
-    this.TeamMembersSummary = this.Regions.map(region => {
-      const count = this.TeamMembers.filter(member => member.region === region.name).length;
-      const unavailable = this.TeamMembers.filter(member => member.region === region.name && member.status === 'Busy').length;
-      return { region, count, unavailable };
-    });
-  }
+
+
 
   private ClientsInit() {
     this.Clients = ["ABC Infotech Ltd.", "DEF Software Solutions", "GHI Industries", "JKL INC"];
@@ -102,7 +97,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
   private ProjectsInit() {
     this.Projects = ["Project A", "Project B", "Project C", "Project D"];
   }
@@ -116,41 +110,19 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  private TeamMembersInit() {
-    this.TeamMembers = [
-      { id: 1, name: 'Ford', status: 'Busy', region: 'East' },
-      { id: 10, name: 'Miller', status: 'Available', region: 'North' },
-      { id: 11, name: 'James', status: 'Busy', region: 'South' },
-      { id: 2, name: 'Smith', status: 'Available', region: 'East' },
-      { id: 3, name: 'Johnson', status: 'Available', region: 'East' },
-      { id: 4, name: 'Brown', status: 'Available', region: 'East' },
-      { id: 5, name: 'Davis', status: 'Available', region: 'East' },
-      { id: 6, name: 'Wilson', status: 'Available', region: 'North' },
-      { id: 7, name: 'Moore', status: 'Available', region: 'North' },
-      { id: 8, name: 'Taylor', status: 'Busy', region: 'North' },
-      { id: 9, name: 'Anderson', status: 'Available', region: 'North' },
-      { id: 12, name: 'Brown', status: 'Available', region: 'South' },
-      { id: 13, name: 'Clark', status: 'Busy', region: 'South' },
-      { id: 14, name: 'Hall', status: 'Busy', region: 'South' },
-      { id: 15, name: 'Lewis', status: 'Busy', region: 'South' },
-      { id: 16, name: 'Johnson', status: 'Available', region: 'West' },
-      { id: 17, name: 'Williams', status: 'Available', region: 'West' },
-      { id: 18, name: 'Jones', status: 'Available', region: 'West' },
-      { id: 19, name: 'Brown', status: 'Available', region: 'West' },
-      { id: 20, name: 'Davis', status: 'Busy', region: 'West' }
-    ];
-
-  }
-
   onProjectChange($event: any) {
     //console.log($event.target.innerHTML);
     this.ProjectName = $event.target.innerHTML;
     this.ProjectBriefInit($event.target.innerHTML);
   }
 
+  /**
+   * Returns the first visible region from the dashboardRegions array.
+   * @returns The first region with the 'Display' property set to true, or undefined if no visible region is found.
+   */
   getFirstVisibleRegion() {
     //Retorna la primera region que tenga display en true
-    return this.Regions.find(region => region.display);
+    return this.dashboardRegions.find(region => region.Display);
   }
 
   getYearComparison(year: number) {

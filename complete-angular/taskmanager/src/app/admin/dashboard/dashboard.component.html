@@ -142,10 +142,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let member of TeamMembersSummary">
-                  <td><strong>{{ member.region.name }}</strong></td>
-                  <td>{{ member.count }}</td>
-                  <td>{{ member.unavailable }}</td>
+                <tr *ngFor="let dbregion of dashboardRegions">
+                  <td><strong>{{ dbregion.Name }}</strong></td>
+                  <td>{{ dbregion.teammembersCount }}</td>
+                  <td>{{ dbregion.busyTeamMembers }}</td>
                 </tr>
               </tbody>
             </table>
@@ -163,53 +163,65 @@
             </div>
             <!-- Acordeon para los empleados -->
             <div class="accordion" id="teamMembersAccordion">
-              <ng-container *ngFor="let region of Regions; let i = index">
-                <div class="accordion-item" *ngIf="region.display">
+              <ng-container *ngFor="let region of dashboardRegions; let i = index">
 
-                  <h2 class="accordion-header" [id]="region.name + 'Heading'">
+                <div class="accordion-item" *ngIf="region.Display">
+
+                  <h2 class="accordion-header" [id]="region.Name + 'Heading'">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                      [attr.data-bs-target]="'#' + region.name+ 'Collapse'"
-                      [attr.aria-expanded]="region === getFirstVisibleRegion()  ? 'true' : 'false'"
-                      [attr.aria-controls]="region.name + 'Collapse'">
-                      {{ region.name }}
+                      [attr.data-bs-target]="'#' + region.Name+ 'Collapse'"
+                      [attr.aria-expanded]="region.Name === getFirstVisibleRegion()?.Name  ? 'true' : 'false'"
+                      [attr.aria-controls]="region.Name + 'Collapse'">
+                      {{ region.Name }}
                     </button>
                   </h2>
 
 
-                  <div [id]="region.name+ 'Collapse'" class="accordion-collapse collapse"
-                    [attr.aria-labelledby]="region.name + 'Heading'" data-bs-parent="#teamMembersAccordion"
+                  <div [id]="region.Name+ 'Collapse'" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="region.Name + 'Heading'" data-bs-parent="#teamMembersAccordion"
                     [class.show]="region === getFirstVisibleRegion() ">
 
                     <div class="accordion-body">
 
-                      <div *ngIf="region.card;then firstTemplate else secondTemplate"></div>
+                      <div *ngIf="region.Card;then firstTemplate else secondTemplate"></div>
 
                       <ng-template #firstTemplate>
+
                         <div class="card">
                           <div class="card-header">
                             Team Members
                           </div>
+
                           <div class="card-body">
                             <div class="list-group">
-                              <a *ngFor="let member of TeamMembers | filter: 'region' : region.name"
+
+                              <a *ngFor="let member of region.TeamMembers"
                                 class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                   <h5 class="mb-1">{{ member.name }}</h5>
-                                  <small [style.color]="(member.status === 'Busy') ? 'red' : 'black'">
-                                    {{ member.status}}</small>
+                                  <small [style.color]="(member.status === TMStatus.Busy) ? 'red' : 'black'">
+                                    {{ member.status}}
+                                  </small>
                                 </div>
+
                                 <div class="d-flex justify-content-between">
                                   <p class="mb-1">ID: {{ member.id }}</p>
-                                  <i class="fas fa-phone" *ngIf="member.status === 'Available'"></i>
-                                  <i class="fas fa-clock" *ngIf="member.status === 'Busy'"></i>
+
+                                  <i class="fas fa-phone" *ngIf="member.status === TMStatus.Available"></i>
+                                  <i class="fas fa-clock" *ngIf="member.status === TMStatus.Busy"></i>
+
                                 </div>
                               </a>
+
                             </div>
+
                           </div>
                         </div>
+
                       </ng-template>
 
                       <ng-template #secondTemplate>
+
                         <table class="table">
                           <thead>
                             <tr>
@@ -219,19 +231,22 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let member of TeamMembers | filter: 'region' : region.name">
+
+                            <tr *ngFor="let member of  region.TeamMembers">
                               <td>{{ member.id }}</td>
-                              <td [style.color]="(member.status === 'Busy') ? 'red' : 'black'">
+                              <td [style.color]="(member.status === TMStatus.Busy) ? 'red' : 'black'">
                                 {{ member.name }}
                               </td>
                               <td>
-                                <i class="fas fa-phone" *ngIf="member.status === 'Available'"></i>
-                                <i class="fas fa-clock" *ngIf="member.status === 'Busy'"></i>
+                                <i class="fas fa-phone" *ngIf="member.status === TMStatus.Available"></i>
+                                <i class="fas fa-clock" *ngIf="member.status === TMStatus.Busy"></i>
                                 {{ member.status }}
                               </td>
                             </tr>
+
                           </tbody>
                         </table>
+
                       </ng-template>
 
                     </div>
@@ -247,4 +262,4 @@
     </div>
   </div>
 
-  <div style="font-size: 10px;">{{TeamMembers | json}}</div>
+  <div style="font-size: 10px;">{{this.dashboardRegions| json}}</div>
