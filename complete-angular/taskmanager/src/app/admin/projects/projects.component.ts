@@ -12,8 +12,6 @@ import { ObjectProperties } from '../../classes/object-properties.class';
 })
 
 export class ProjectsComponent implements OnInit {
-
-
   @ViewChild('myModalClose', { static: false }) modalClose!: ElementRef;
   @ViewChild('myEditModalClose', { static: false }) editModalClose!: ElementRef;
   @ViewChild('myDeleteModalClose', { static: false }) deleteModalClose!: ElementRef;
@@ -47,7 +45,6 @@ export class ProjectsComponent implements OnInit {
 
       this.getProjectProperties();
   }
-
 
   /**
    * Retrieves all project properties from the server.

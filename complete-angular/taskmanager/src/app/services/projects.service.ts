@@ -74,7 +74,6 @@ export class ProjectsService {
   }
 
   getAllProperties(): Observable<ObjectProperties> {
-
     return this.http.get<ObjectProperties[]>(`${this.api_url}/properties`, {responseType:"json"}).pipe(
       catchError(this.handleError)
       );
@@ -82,7 +81,7 @@ export class ProjectsService {
 
   searchProjects(searchby: string, searchtext: string): Observable<Project[]> {
     if(searchtext == null || searchtext == undefined || searchtext == '') return this.getAllProjects();
-    
+
     return this.http.get<Project[]>(`${this.api_url}/search/${searchby}/${searchtext}`, {responseType:"json"}).pipe(
       catchError(this.handleError)
       );
