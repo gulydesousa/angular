@@ -10,7 +10,12 @@ namespace MvcTaskManager.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string Name { get; set; } = string.Empty;
-        public DateTime DateOfStart { get; set; }
+        private DateTime _dateOfStart;
+        public DateTime DateOfStart
+        {
+            get { return _dateOfStart; }
+            set { _dateOfStart = value.ToUniversalTime(); }
+        }
         public int TeamSize { get; set; }
     }
 
@@ -22,7 +27,6 @@ namespace MvcTaskManager.Models
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Data Source=GULYDESOUSA;Initial Catalog=TaskManager;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
         }
     }
 }

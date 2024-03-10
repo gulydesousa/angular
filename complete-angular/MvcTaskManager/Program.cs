@@ -1,3 +1,6 @@
+using MvcTaskManager.Utils;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //*******************
@@ -5,16 +8,27 @@ var builder = WebApplication.CreateBuilder(args);
 //*******************
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowMyOrigin",
+    options.AddPolicy("AllowAngularApp",
+                        // Solo admitimos peticiones que vienen de localhost
         builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
-                          .AllowAnyHeader()
-                          .AllowAnyMethod());
+                            //Con puerto: Cambia a 4200 o al puerto donde se ejecuta tu app Angular
+                            //builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
 });
 
 
 // Add services to the container.
-
-builder.Services.AddControllers();
+//Configuring the JSON serialization options for the controllers in an ASP.NET Core application.
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        // Configura el formato de fecha aquí
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 var app = builder.Build();
 
@@ -22,14 +36,15 @@ var app = builder.Build();
 app.UseHsts();
 
 app.UseHttpsRedirection();
+//*******************
+//CORS
+app.UseCors("AllowAngularApp");
+//*******************
+
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-//*******************
-//CORS
-app.UseCors("AllowMyOrigin");
-//*******************
 
 app.Run();

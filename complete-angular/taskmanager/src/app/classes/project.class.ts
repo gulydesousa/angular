@@ -1,9 +1,7 @@
 export class Project {
-  id: number = 0;
-  name: string = '';
-  dateOfStart: Date | undefined;
-  teamSize: number | undefined;
-
-  constructor() {
-  }
+  ID: number = 0;
+  Name: string = '';
+  // Ahora es un string en formato 'YYYY-MM-DD' que viene asi desde la api
+  DateOfStart: string = '';
+  TeamSize: number | undefined;
 }
