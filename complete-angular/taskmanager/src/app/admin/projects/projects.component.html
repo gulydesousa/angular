@@ -9,11 +9,25 @@
     </ol>
 </nav>
 
-<button type="button" class="btn btn-success mt-4" data-bs-toggle="modal"
-        data-bs-target="#addProjectModal">
-  <i class="fas fa-plus"></i> Add Project
-</button>
+
 <!-- <div style="font-size: 10px;">{{this.projects| json}}</div> -->
+<!--!Buscador -->
+<div class="input-group mt-4 col-md-6 ms-auto">
+  <button type="button" class="btn btn-success me-5" data-bs-toggle="modal"
+        data-bs-target="#addProjectModal">
+    <i class="fas fa-plus"></i> Add Project
+  </button>
+
+  <select class="form-select" [(ngModel)]="searchBy">
+    <option *ngFor="let property of projectProperties.Properties" [value]="property">{{ property }}</option>
+  </select>
+  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." (input)="onInputChange()">
+  <button class="btn btn-primary" (click)="onSearchClick()">
+    <i class="fas fa-search"></i> Search
+  </button>
+</div>
+
+
 <!--? Grid de proyectos -->
 <div class="p-3 card mt-4">
   <table class="table">

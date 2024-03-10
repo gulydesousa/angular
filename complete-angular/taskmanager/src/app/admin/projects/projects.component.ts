@@ -44,6 +44,8 @@ export class ProjectsComponent implements OnInit {
         // 3. Handle completion
         complete: () => { console.log('Completed'); }
       });
+
+      this.getProjectProperties();
   }
 
 
@@ -62,7 +64,7 @@ export class ProjectsComponent implements OnInit {
     });
    // Add a return statement
   }
-  
+
   /**
    * Handles the click event when adding a new project.
    */
@@ -198,4 +200,19 @@ export class ProjectsComponent implements OnInit {
 
   }
 
+  onInputChange()
+  {
+    if(this.searchText.length==0)
+    {
+      this.projectService.getAllProjects()
+      .subscribe({
+        // 1. Handle data
+        next: (projects) => { this.projects = projects; console.log(this.projects); },
+        // 2. Handle error
+        error: (err) => { console.error(err); },
+        // 3. Handle completion
+        complete: () => { console.log('Completed'); }
+      });
+    }
+  }
 }
