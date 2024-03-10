@@ -21,8 +21,11 @@
   <select class="form-select" [(ngModel)]="searchBy">
     <option *ngFor="let property of projectProperties.Properties" [value]="property">{{ property }}</option>
   </select>
-  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." (input)="onInputChange()">
-  <button class="btn btn-primary" (click)="onSearchClick()">
+  <!-- <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." (input)="onInputChange()"> -->
+  <input *ngIf="searchBy !== 'DateOfStart'" type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..."  (input)="onInputChange()">
+  <input *ngIf="searchBy === 'DateOfStart'" type="date" class="form-control" [(ngModel)]="searchText" placeholder="Search..."  (input)="onInputChange()">
+
+   <button class="btn btn-primary" (click)="onSearchClick()">
     <i class="fas fa-search"></i> Search
   </button>
 </div>
