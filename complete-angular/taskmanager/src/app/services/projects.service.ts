@@ -5,6 +5,7 @@ import { Project } from '../classes/project.class';
 import {environment} from  '../../environments/environments'
 //Configurar tu cliente HTTP para permitir certificados autofirmados
 import {HttpBackend } from '@angular/common/http';
+import { ObjectProperties } from '../classes/object-properties.class';
 
 @Injectable({
   //available for injection in any component
@@ -14,8 +15,9 @@ import {HttpBackend } from '@angular/common/http';
 /**
  * Service for managing projects.
  */
+
 export class ProjectsService {
-  private http: HttpClient;//Configurar tu cliente HTTP para permitir certificados autofirmados
+  private http: HttpClient;
   private api_url: string = environment.apiUrl + '/projects';
 
   constructor(private httpclient: HttpClient, handler: HttpBackend){
@@ -29,7 +31,8 @@ export class ProjectsService {
    * @throws An error if there is an issue retrieving the projects.
    */
   getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.api_url).pipe(
+
+    return this.http.get<Project[]>(this.api_url, {responseType:"json"}).pipe(
       catchError(this.handleError)
       );
   }
@@ -41,11 +44,10 @@ export class ProjectsService {
    * @throws An error if there is an issue inserting the project.
    */
   insertProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.api_url, project).pipe(
+    return this.http.post<Project>(this.api_url, project, {responseType:"json"}).pipe(
       catchError(this.handleError)
       );
   }
-
 
   /**
    * Updates an existing project on the server.
@@ -54,21 +56,36 @@ export class ProjectsService {
    * @throws An error if there is an issue updating the project.
    */
   updateProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(`${this.api_url}/${project.ID}`, project).pipe(
+    return this.http.put<Project>(`${this.api_url}/${project.ID}`, project, {responseType:"json"}).pipe(
       catchError(this.handleError)
     );
   }
 
   /**
-   * Deletes a project from the server.
+   * Deletes an existing project from the server.
    * @param project The project object to be deleted.
-   * @returns An Observable that emits the deleted Project object.
+   * @returns An Observable that emits a string indicating the success of the operation.
    * @throws An error if there is an issue deleting the project.
    */
-  deleteProject(project: Project): Observable<Project> {
-    return this.http.delete<Project>(`${this.api_url}/${project.ID}`).pipe(
+  deleteProject(project: Project): Observable<string> {
+    return this.http.delete(`${this.api_url}/${project.ID}`, { responseType: 'text' }).pipe(
       catchError(this.handleError)
     );
+  }
+
+  getAllProperties(): Observable<ObjectProperties> {
+
+    return this.http.get<ObjectProperties[]>(`${this.api_url}/properties`, {responseType:"json"}).pipe(
+      catchError(this.handleError)
+      );
+  }
+
+  searchProjects(searchby: string, searchtext: string): Observable<Project[]> {
+    if(searchtext == null || searchtext == undefined || searchtext == '') return this.getAllProjects();
+    
+    return this.http.get<Project[]>(`${this.api_url}/search/${searchby}/${searchtext}`, {responseType:"json"}).pipe(
+      catchError(this.handleError)
+      );
   }
 
   private handleError(error: any): Promise<any> {
