@@ -1,6 +1,38 @@
-# TaskManager
+# Task Manager: <br>  *Prácticas de Angular v17* 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+
+> [!NOTE]
+> Este proyecto forma parte del curso de Udemy: Complete Angular 11 - Ultimate Guide - with Real World App, y es un recurso excelente para comprender mejor el desarrollo de aplicaciones con Angular.
+
+> - [x] [Complete Angular 11 - Ultimate Guide - with Real World App](https://neoris.udemy.com/course/complete-angular-indepth-easy)
+
+
+## Instalación
+Estos son los pasos para ejecutar `Netcore Contact Manager` en tu máquina local para propósitos de desarrollo y pruebas.
+
+Asegúrate de tener lo siguiente instalado en tu máquina de desarrollo:
+
+- .NET Core 8
+- SQL Server
+
+## Web API: *MvcTaskManager*
+
+Este proyecto conecta con una Web Api implementada con **NetCore 7**
+
+- Directorio de la solucion: **MvcTaskManager**
+
+- Para ejecutar la solución necesitas tener una base de datos de SQL Server llamada **TaskManager** 
+
+- En el fichero **launchSettings.json** está configurado el puerto de ejecución de la API: 
+ *http://localhost:7004* 
+
+- Para poder hacer uso del protocolo **https** necesitarás un certificado.
+
+- En **Project.cs** está la ruta de conexión a la base de datos.
+
+- En **Program.cs** está configurado el CORS para permitir conexiones desde localhost
+
+## Aplicación Web: *TaskManager*
 
 ## Development server
 
