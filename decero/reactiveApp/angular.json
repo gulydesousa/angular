@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "reactiveApp:build:production"
+              "buildTarget": "reactiveApp:build:production"
             },
             "development": {
-              "browserTarget": "reactiveApp:build:development"
+              "buildTarget": "reactiveApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "reactiveApp:build"
+            "buildTarget": "reactiveApp:build"
           }
         },
         "test": {
