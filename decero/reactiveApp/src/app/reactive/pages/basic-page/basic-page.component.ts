@@ -59,7 +59,7 @@ export class BasicPageComponent implements OnInit {
   isValidField(field: string): boolean | null {
     //? Este metodo nos permite saber si un campo es valido
     const control = this.myForm.controls[field];
-    return control  && control.touched && control.errors != null ;
+    return control && control.touched && control.errors != null;
   }
 
   getFieldError(field: string): string | null {
