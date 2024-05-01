@@ -32,6 +32,9 @@ export class RegisterPageComponent {
     password : ['',[Validators.required, Validators.minLength(6)]],
     password2 : ['',[Validators.required, Validators.minLength(6)]],
 
+  },
+  { //Validaciones que se aplican a todo el formulario puesto que hay que comparar
+    validators:[this.validatorsService.isFieldOneEqualToFieldTwo('password','password2')]
   });
 
 
