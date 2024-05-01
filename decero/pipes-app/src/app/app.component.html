@@ -1,0 +1,227 @@
+<h1 class="mt-3">Pipes <small>Angular</small></h1>
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Variable</th>
+          
+          <th>Pipe</th>
+          
+          <th>Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{this.minombre}}</td>
+          <td>minombre</td>
+          <td>{{this.minombre}}</td>
+        </tr>
+       
+        <tr>
+          <td>{{this.minombre}}</td>
+          <td>capitalize</td>
+          <td>{{this.minombre | capitalize}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.minombre}}</td>
+          <td>capitalize</td>
+          <td>{{this.minombre | capitalize:false}}</td>
+        </tr>
+       
+       
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>uppercase</td>
+          <td>{{this.nombre | uppercase}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>lowercase</td>
+          <td>{{this.nombre | lowercase}}</td>
+        </tr>
+      
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>slice:3</td>
+          <td>{{this.nombre | slice:3}}</td>
+        </tr>
+      
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>slice:0:3</td>
+          <td>{{this.nombre | slice:0:3}}</td>
+        </tr>
+      
+
+        <tr>
+          <td>{{this.arreglo}}</td>
+          <td>slice:1:5</td>
+          <td>{{this.arreglo | slice:1:5}}</td>
+        </tr>
+
+        
+        <tr>
+          <td>{{this.PI}}</td>
+          <td>number</td>
+          <td>{{this.PI }}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.PI}}</td>
+          <td>PI | number</td>
+          <td>{{this.PI  | number}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.PI}}</td>
+          <td>Sin decimales: PI | number:'1.0-0</td>
+          <td>{{this.PI  | number:'1.0-0'}}</td>
+        </tr>
+
+        
+        <tr>
+          <td>{{this.PI}}</td>
+          <td>Leading Zeroes: PI  | number:'3.0-0'</td>
+          <td>{{this.PI  | number:'3.0-0'}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.PI}}</td>
+          <td>Redondeo 2 dec: PI  | number:'.0-2'</td>
+          <td>{{this.PI  | number:'.0-2'}}</td>
+        </tr>
+
+
+        <tr>
+          <td>{{this.porcentaje}}</td>
+          <td>Porcentaje | percent</td>
+          <td>{{this.porcentaje| percent}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.porcentaje}}</td>
+          <td>Porcentaje dos enteros dos decimales | percent:'2.2-2'</td>
+          <td>{{this.porcentaje| percent:'2.2-2'}}</td>
+        </tr>
+
+        
+        <tr>
+          <td>{{this.salario}}</td>
+          <td>currency </td>
+          <td>{{ this.salario | currency }}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.salario}}</td>
+          <td>currency:'EUR' </td>
+          <td>{{ this.salario | currency:'EUR' }}</td>
+        </tr>
+        
+        <tr>
+          <td>{{this.salario}}</td>
+          <td>currency:'CAD ':'symbol-narrow':'.0-0'  </td>
+          <td>{{ this.salario | currency:'CAD ':'symbol-narrow':'.0-0' }}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.valorPromesa}}</td>
+          <td>async </td>
+          <td>{{ this.valorPromesa | async}}</td>
+        </tr>
+
+
+        <tr>
+          <td>{{this.valorPromesa}}</td>
+          <td>async </td>
+          <td>{{ this.valorPromesa | async}}</td>
+        </tr>
+
+
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>Date | date </td>
+          <td>{{ this.fecha | date}}</td>
+        </tr>
+
+        
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>date:'medium' </td>
+          <td>{{ this.fecha | date:'medium'}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>date:'short' </td>
+          <td>{{ this.fecha | date:'short'}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>date:'dd-MM-YY' </td>
+          <td>{{ this.fecha | date:'dd-MM-YY'}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>date:'long': '': 'fr' </td>
+          <td>{{ this.fecha | date:'long': '': 'fr'}}</td>
+        </tr>
+        
+        <tr>
+          <td>{{this.fecha}}</td>
+          <td>date:'long': '': '{{idioma}}' </td>
+          <td>{{ this.fecha | date:'long': '': idioma}}</td>
+        </tr>
+
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>Contraseña: {{activar}} </td>
+          <td>{{ this.nombre | asterisco:activar }}</td>
+          <td><button class="mr-1  btn-success btn" (click)="activar=!activar;">Activar/Desactivar</button></td>
+        </tr>
+
+
+        <tr>
+          <td><button class="mr-1 btn-primary btn" (click)="setIdioma('es')">Español</button></td>
+          <td><button class="mr-1  btn-secondary btn" (click)="setIdioma('en')">Inglés</button></td>
+          <td><button class="mr-1  btn-success btn"(click)="setIdioma('fr')">Frances</button></td>
+      </tr>
+       
+
+      </tbody>
+    </table>
+
+
+<h3>JSON</h3>
+<hr>
+<div class="row">
+  <div class="col">
+    <pre>{{heroe | json}}</pre>
+  </div>
+</div>
+
+<h3>Dom Seguro</h3>
+<hr>
+<div class="row">
+  <div class="col">
+   <iframe [src]="miVideo | domseguro" height="714" width="345" frameborder="0" scrolling="no" ></iframe>
+
+  </div>
+</div>
+
+
+
+
+<h1>Slice:5:20 </h1>
+<ul>
+  <li *ngFor="let item of arreglo | slice:5:20"> {{item}} </li>
+
+</ul>
+
+  </div>
+  </div>  

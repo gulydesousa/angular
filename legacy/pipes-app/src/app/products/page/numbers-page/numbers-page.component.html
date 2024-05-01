@@ -1,0 +1,134 @@
+<p-panel header="Pipes Numéricos" class="p-1">
+  <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+</p-panel>
+
+<div class="grid">
+
+  <div class="col-12 md:col-5">
+    <p-card header="Number" subheader="Pipes">
+      <ol>
+        <li>
+          currency
+        </li>
+        <li>
+          currency | number
+        </li>
+        <li>
+          currency | number: '1.2-2'
+        </li>
+        <li>
+          currency | number: '1.2-4'
+        </li>
+        <li>
+          currency | number: '1.8-8'
+        </li>
+      </ol>
+
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-7">
+    <p-card header="Number" subheader="Formatted Values">
+      <ol>
+        <li>
+          {{this.currency}}
+        </li>
+        <li>
+          {{this.currency | number}}
+        </li>
+        <li>
+          {{this.currency | number: '1.2-2'}}
+        </li>
+        <li>
+          {{this.currency | number: '1.2-4'}}
+        </li>
+        <li>
+          {{this.currency | number: '1.8-8'}}
+        </li>
+      </ol>
+    </p-card>
+  </div>
+
+
+  <div class="col-12 md:col-5">
+    <p-card header="Currency" subheader="Pipes">
+      <ol>
+        <li>
+          currency | currency
+        </li>
+        <li>
+          currency | currency: 'EUR'
+        </li>
+        <li>
+          currency | currency: 'EUR' : 'symbol'
+        </li>
+        <li>
+          currency | currency: '' : 'symbol-narrow'
+        </li>
+        <li>
+          currency | currency: 'EUR' : 'symbol-narrow' : '1.4-4'
+        </li>
+      </ol>
+
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-7">
+    <p-card header="Currency" subheader="Formatted Values">
+      <ol>
+        <li>
+          {{this.currency | currency}}
+        </li>
+        <li>
+          {{this.currency | currency: 'EUR'}}
+        </li>
+        <li>
+          {{this.currency | currency: 'EUR' : 'symbol'}}
+        </li>
+        <li>
+          {{this.currency | currency: '' : 'symbol-narrow'}}
+        </li>
+        <li>
+          {{this.currency | currency: 'EUR' : 'symbol-narrow' : '1.4-4'}}
+        </li>
+      </ol>
+    </p-card>
+  </div>
+
+
+
+  <div class="col-12 md:col-5">
+    <p-card header="Percent" subheader="Pipes">
+      <ol>
+        <li>
+          percent
+        </li>
+        <li>
+          percent | percent
+        </li>
+        <li>
+          percent | percent: '1.2-2'
+        </li>
+      </ol>
+
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-7">
+    <p-card header="Percent" subheader="Formatted Values">
+      <ol>
+        <li>
+          {{this.percent}}
+        </li>
+        <li>
+          {{this.percent | percent}}
+        </li>
+        <li>
+          {{this.percent | percent: '1.2-2'}}
+        </li>
+      </ol>
+    </p-card>
+  </div>
+
+</div>
+

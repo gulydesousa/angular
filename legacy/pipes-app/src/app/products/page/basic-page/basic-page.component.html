@@ -1,0 +1,111 @@
+<p-panel header="Pipes Básicos" class="p-1">
+  <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="uppercase"> {{this.uppercase | uppercase}}</p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="lowercase"> {{this.lowercase | lowercase}}</p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="titlecase"> {{this.titlecase | titlecase}}</p-card>
+  </div>
+
+
+  <div class="col-12 md:col-4">
+    <p-card header="Date Pipes">
+      <ol>
+        <li>
+          fecha
+        </li>
+        <li>
+          fecha | date
+        </li>
+        <li>
+          fecha | date:'short'
+        </li>
+        <li>
+          fecha | date:'long'
+        </li>
+        <li>
+          fecha | date:'MMMM'
+        </li>
+        <li>
+          fecha | date:'MMMM dd, yyyy'
+        </li>
+      </ol>
+      <hr>
+      <ol>
+        <li>
+          fecha | date:'long' : 'GMT-6'
+        </li>
+        <li>
+          fecha | date:'long' : 'GMT-4'
+        </li>
+        <li>
+          fecha | date:'long' : '' : 'es-ES'
+        </li>
+        <li>
+          fecha | date:'long' : '' : 'fr-CA'
+        </li>
+        <li>
+          fecha | date:'long' : '' : en-US'
+        </li>
+      </ol>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-8">
+    <p-card header="Custom Date">
+      <ol>
+        <li>
+          {{this.customDate}}
+        </li>
+        <li>
+          {{this.customDate | date}}
+        </li>
+        <li>
+          {{this.customDate | date:'short'}}
+        </li>
+        <li>
+          {{this.customDate | date:'long'}}
+        </li>
+        <li>
+          {{this.customDate | date:'MMMM'}}
+        </li>
+        <li>
+          {{this.customDate | date:'MMMM dd, yyyy'}}
+        </li>
+      </ol>
+      <hr>
+      <ol>
+        <li>
+          {{this.customDate | date:'long' : 'GMT-6'}}
+        </li>
+        <li>
+          {{this.customDate | date:'long' : 'GMT-4'}}
+        </li>
+        <li>
+          {{this.customDate | date:'long' : '' : 'es-ES'}}
+        </li>
+        <li>
+          {{this.customDate | date:'long' : '' : 'fr-CA'}}
+        </li>
+        <li>
+          {{this.customDate | date:'long' : '' : 'en-US'}}
+        </li>
+      </ol>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4 flex justify-between">
+    <p-button label="Español" (click)="setIdioma('es')" styleClass=" mr-2"></p-button>
+    <p-button label="English" severity="secondary" (click)="setIdioma('en')"  styleClass=" mr-2"></p-button>
+    <p-button label="French" severity="success" (click)="setIdioma('fr')"  styleClass=" mr-2"></p-button>
+  </div>
+
+</div>

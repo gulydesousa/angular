@@ -1,43 +1,10 @@
-# 🚀 GifsApp
+# PipesApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
+## Development server
 
-## Angular cli
-
-Comprobar si está instalado
-
-```BASH
-ng version
-```
-Instalarlo si hace falta
-
-```BASH
-npm install -g @angular/cli
-```
-
-## Reinstalar las dependencias
-
-```BASH
-npm install
-```
-
-## Arrancar en local
-
-Se abrirá el navegador automaticamente.
-```BASH
-ng serve -o
-```
-Navigate to `http://localhost:4200/`. 
-
-Si algo cambias en el codigo, se hará un reload automatico.
-
-
-
-
-
-
-
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
