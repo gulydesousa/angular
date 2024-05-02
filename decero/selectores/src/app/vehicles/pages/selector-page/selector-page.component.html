@@ -1,0 +1,62 @@
+<h4 class="mt-3">Primer selector</h4>
+<hr>
+<form [formGroup]="myForm">
+  <div class="row mb-3">
+    <!-- Manufacturer -->
+    <div class="col-12 col-md-4">
+      <label class="form-label">Manufacturer:</label>
+      <select class="form-control" title="manufacturer" id="manufacturer" name="manufacturer"
+        formControlName="manufacturer">
+        <option value="">-- Seleccione un fabricante --</option>
+        <option *ngFor="let mnf of manufacturers" [value]="mnf.Mfr_Name">
+
+          {{ mnf.Mfr_Name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Make -->
+    @if(this.makes.length>0){
+    <div class="col-12 col-md-4">
+      <label class="form-label">Make:</label>
+      <select class="form-control" title="make" id="make" name="make" formControlName="make">
+        <option value="">-- Seleccione una marca --</option>
+        <option *ngFor="let m of makes" [value]="m.Make_ID">
+          {{m.Make_ID}} - {{ m.Make_Name}}
+        </option>
+      </select>
+    </div>
+    }
+
+    <!-- Model -->
+    @if(this.models.length>0){
+    <div class="col-12 col-md-4">
+      <label class="form-label">Models:</label>
+      <select class="form-control" title="model"
+              id="model" name="model"
+              formControlName="model">
+        <option value="">-- Seleccione un modelo --</option>
+        <option *ngFor="let m of models" [value]="m.Model_ID">
+          {{ m.Model_Name}}
+        </option>
+      </select>
+    </div>
+    }
+  </div>
+</form>
+
+
+
+<h5 class="mt-5">Formulario</h5>
+<!-- * tag:code
+     * Este tag muestra su contenido en una fuente monoespaciada
+     * que ayuda a distinguir el código del texto normal. -->
+<code>
+  {{ myForm.value | json }}
+</code>
+
+
+<h5 class="mt-5">Estado del formulario</h5>
+<ul>
+  <li>Is Form Valid? {{ myForm.valid }} </li>
+</ul>
