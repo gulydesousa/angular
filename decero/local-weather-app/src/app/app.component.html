@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <span data-testid="title">LocalCast Weather</span>
+  <div fxFlex></div>
+  <mat-icon>brightness_5</mat-icon>
+  <mat-slide-toggle color="warn" data-testid="darkmode-toggle">
+  </mat-slide-toggle>
+  <mat-icon>bedtime</mat-icon>
+</mat-toolbar>
+
+<div fxLayoutAlign="center" class="mt-16">
+  <div class="mat-caption v-pad">Your city, your forecast, right now!</div>
+</div>
+
+<div fxLayoutAlign="center" class="mt-16">
+  <city-search></city-search>
+</div>
+
+
+<div fxLayout="row" >
+  <div fxFlex></div>
+  <mat-card appearance="outlined" fxFlex="300px">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="mat-headline-5">Current Weather</div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <div fxFlex></div>
+</div>
+
+<div class="mt-16" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
+
+  <div class="mat-headline-8">
+    Reactivity Mode
+    <mat-icon matTooltip="For demonstration purposes only">info</mat-icon>
+  </div>
+</div>
+
+<router-outlet />
