@@ -5,7 +5,7 @@ import {Map} from 'mapbox-gl';
 @Component({
   selector: 'full-screen-page',
   templateUrl: './full-screen-page.component.html',
-  styleUrl: './full-screen-page.component.scss'
+  styleUrls: ['./full-screen-page.component.scss']
 })
 export class FullScreenPageComponent implements AfterViewInit {
 
@@ -15,15 +15,20 @@ export class FullScreenPageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     console.log(this.divMap);
 
-    if(!this.divMap)throw new Error('No se pudo cargar el mapa');
+    if(typeof document === 'undefined' || !this.divMap)
+      throw new Error('No se pudo cargar el mapa');
 
+    try{
     const map = new Map({
       container: this.divMap.nativeElement,
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: 'mapbox://styles/mapbox/streets-v12',
       center: [-74.0066, 40.7135],
       zoom: 15
     });
-
+  }
+  catch(e){
+    console.log(e);
+  }
 
   }
 }
