@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from "@angular/core";
 import { LngLat, Map, Marker } from "mapbox-gl";
 
 interface MarkerAndColor {
@@ -16,7 +22,7 @@ interface PlainMarker {
   templateUrl: "./markers-page.component.html",
   styleUrl: "./markers-page.component.scss",
 })
-export class MarkersPageComponent {
+export class MarkersPageComponent implements AfterViewInit, OnDestroy {
   //Recuperamos #map del html
   @ViewChild("map") divMap?: ElementRef;
   public currentCenter: LngLat = new LngLat(-3.7672, 40.2291);
@@ -45,12 +51,26 @@ export class MarkersPageComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.map) {
+      this.map.remove();
+    }
+  }
+
   //Funcion para agregar marcadores
   addMarker(lngLat: LngLat, color: string = "red") {
     if (!this.map) return;
 
     const marker = new Marker({ color: color, draggable: true });
     marker.setLngLat(lngLat).addTo(this.map!);
+
+    //Agregamos el marcador al array de marcadores
+    this.markers.push({ marker: marker, color: color });
+
+    //Agregamos un listener para cuando se mueva el marcador
+    marker.on("dragend", () => {
+      this.savetoLocalStorage();
+    });
   }
 
   //Funcion para agregar marcadores
@@ -64,8 +84,6 @@ export class MarkersPageComponent {
 
     const marker = new Marker({ color: color, draggable: true });
     marker.setLngLat(lngLat).addTo(this.map!);
-
-    const textColor = this.getTextColor(color);
 
     this.markers.push({ marker: marker, color: color });
 
