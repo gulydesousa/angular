@@ -1,0 +1,19 @@
+<div class="row mt-3">
+<div class="col-2">
+  <alone-menu/>
+</div>
+<div class="col-10">
+  <h1>Standalone Component - Page</h1>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <p>*Este componente no necesita ser importado desde modulos</p>
+      <p *ngIf="false">Porque es su propio modulo</p>
+    </div>
+
+    <!-- Al enviar counter entre corchetes estamos enviando
+         el valor al componente porque es de tipo input -->
+    <alone-component [counter]="101"></alone-component>
+  </div>
+</div>
+</div>

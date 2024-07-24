@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 No usar directamente en AngularCLI (a menos que estén creadas las variables de entorno), ya que las variables de entorno se crean basados en el .env 
 
 **⚙ Pasos para la ejecución**
-1. Clonar el ```.env.template``` y renombrarlo a  ```.env```
+1. 📋 Clonar el ```.env.template``` y renombrarlo a  ```.env```
 
-2. Llenar los valores de las variables de entorno
+2. 🔑 Llenar los valores de las variables de entorno
 
 3. Crear Angular envs (opcional) 
 ```bash

@@ -5,6 +5,7 @@ import {
   OnDestroy,
   ViewChild,
 } from "@angular/core";
+
 import { LngLat, Map, Marker } from "mapbox-gl";
 
 interface MarkerAndColor {

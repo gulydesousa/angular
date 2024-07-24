@@ -11,6 +11,8 @@ import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.
 import { PropertiesPageComponent } from './pages/properties-page/properties-page.component';
 
 import * as mapboxgl from 'mapbox-gl';
+import { AloneComponent } from '../standalone/components/alone-component/alone-component.component';
+import { AloneMenuComponent } from '../standalone/components/alone-menu/alone-menu.component';
 
 (mapboxgl as any).config.ACCESS_TOKEN =
 'pk.eyJ1IjoiZ2Rlc291c2EiLCJhIjoiY2x5eDU0cXgxMXdodzJpcWw5aWpuYXF5YiJ9.i3jKEur4NEOyBSZco1EjIQ';
@@ -28,7 +30,9 @@ import * as mapboxgl from 'mapbox-gl';
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
+    MapsRoutingModule,
+    AloneComponent,
+    AloneMenuComponent
   ]
 })
 export class MapsModule { }
