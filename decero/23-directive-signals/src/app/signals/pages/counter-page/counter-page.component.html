@@ -1,0 +1,9 @@
+<h1>Counter {{counter()}}</h1>
+<hr>
+
+<h2>Square Counter {{ squareCounter()}}</h2>
+<hr>
+
+<button class="btn btn-primary me-2" (click)= "increment(1)">+1</button>
+<button class="btn btn-secondary me-2"  (click)= "increment(-1)">-1</button>
+<button class="btn btn-warning me-2" (click)="counter.set(0)">Reset</button>
