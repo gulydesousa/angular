@@ -122,6 +122,8 @@ export const environment = {
 <br>
 <br>
 
+<br>
+
 #  🚁 Aprovisionamiento de la bbdd MongoDB
 
 Con tu cuenta de `https://www.mongodb.com/`
@@ -129,7 +131,7 @@ Con tu cuenta de `https://www.mongodb.com/`
 Otra opción es `https://railway.app/`
 
 
-Creamos nuestra cuenta y una nueva base de datos en railway que nos proporciona un nuevo string de conexion
+Creamos nuestra cuenta y una nueva base de datos en **RAILWAY** que nos proporciona un nuevo string de conexion
 . Cambiaremos entonces el string de conexion por el nuevo que apunta al servidor railway
 
 ```bash
@@ -141,3 +143,18 @@ MONGO_URI=mongodb://mongo:BwXTUyuHXVNNZlASXNufyofEcXeHLjcG@viaduct.proxy.rlwy.ne
 #JWT: json web token seed
 JWT_SEED=3y6B9z$wQ841rT14kP8zw7mN2vX5aJ0eF6g
 ```
+<br>
+<br>
+
+# 🛫 Aprovisionamiento del servicio
+
+1. Comprobamos que se pueden ejecutar los comandos de compilacion
+
+```bash
+npm run build
+npm run start
+```
+
+2. Creamos un nuevo proyecto en **RAILWAY**
+3. Conectamos al reposito del servicio `https://github.com/gulydesousa/25-nest-backend`
+4. Una vez compilado podemo recuperar la url del servicio publico `https://25-nest-backend-production.up.railway.app` 
