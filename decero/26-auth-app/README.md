@@ -2,26 +2,142 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este proyecto hace uso de una base de datos en **Mongo DB** y un servicio REST implementado con **Nest**
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# 🚠 Arrancar el proyecto en localhost
+***
 
-## Build
+## Iniciar el servicio
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 1. Docker Desktop 🐳
 
-## Running unit tests
+Tenemos una base datos que se llama `25-nest`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Abrir el Docker Desktop y asegurarnos que está en ejecución.
+![alt text](image.png)
 
-## Running end-to-end tests
+2. Ejecutar el comando de arranque:C:\Gdesousa\angular\decero\25-nest-backend
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+```bash
+#Levantamos el contenedor
+docker compose up -d
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+```bash
+#Si quisieramos detener el contenedor tenemos este comando
+docker compose down
+```
+Verás que la base de datos está ahora en un directorio mongo
+
+![alt text](image-1.png)
+
+
+##### docker-compose.yml
+```yml
+#docker-compose.yml
+
+version: '3'
+
+services:
+  db:
+    container_name: meand-db
+    image: mongo:5.0.16
+    volumes:
+      - ./mongo/data:/data/db
+    ports:
+      - "27017:27017"
+    restart: always  
+```
+### 2. Arrancamos el servicio Nest 🐣
+
+```bash
+npm run start:dev
+```
+Este comando viene de la configuración del package.json
+#### C:\Gdesousa\angular\decero\25-nest-backend\package.json
+
+```JSON
+{
+  "name": "25-nest-backend",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+```
+
+
+### 3. Probamos el servicio con postman 🚀
+
+Hacemos una petición de prueba, por ejemplo: **Registrar un usuario**
+
+![alt text](image-2.png)
+
+👍 El backend está funcionando
+
+
+***
+
+## Iniciar la web 
+
+```bash
+ng serve -o
+``` 
+
+### 1. Variables de entorno
+
+En el fichero `26-auth-app\src\environments\environment.ts` tenemos las variables de entorno.
+
+*Nota que es la misma ruta del servicio*
+```ts
+/* src\environments\environment.ts */
+export const environment = {
+  baseUrl: "http://localhost:3000",
+};
+```
+
+### 2. Arrancamos el proyecto web
+
+```bash
+ ng serve -o
+```
+<br>
+<br>
+
+#  🚁 Aprovisionamiento de la bbdd MongoDB
+
+Con tu cuenta de `https://www.mongodb.com/`
+
+Otra opción es `https://railway.app/`
+
+
+Creamos nuestra cuenta y una nueva base de datos en railway que nos proporciona un nuevo string de conexion
+. Cambiaremos entonces el string de conexion por el nuevo que apunta al servidor railway
+
+```bash
+#Local MogoDB
+#MONGO_URI=mongodb://localhost:27017/mean-db
+#Remote MongoDB
+MONGO_URI=mongodb://mongo:BwXTUyuHXVNNZlASXNufyofEcXeHLjcG@viaduct.proxy.rlwy.net:25267
+
+#JWT: json web token seed
+JWT_SEED=3y6B9z$wQ841rT14kP8zw7mN2vX5aJ0eF6g
+```
