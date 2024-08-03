@@ -158,3 +158,39 @@ npm run start
 2. Creamos un nuevo proyecto en **RAILWAY**
 3. Conectamos al reposito del servicio `https://github.com/gulydesousa/25-nest-backend`
 4. Una vez compilado podemo recuperar la url del servicio publico `https://25-nest-backend-production.up.railway.app` 
+
+
+<br>
+<br>
+
+
+# 🚀 Aprovisionamiento de la web
+
+1. Creamos una copia del proyecto en lo que será un repositorio exclusivo para la web 
+
+2. Cambiamos la configuracion para que apunte al servicio publicado en la web `https://25-nest-backend-production.up.railway.app`
+
+```typescript
+export const environment = {
+  //baseUrl: "http://localhost:3000",
+  baseUrl: `https://25-nest-backend-production.up.railway.app`
+};
+```
+
+3. Probamos lanzar la aplicación para comprobar que funciona correctamente
+
+```bash
+ng serve -o
+```
+
+4. Ahora creamos el copilado para producción:
+
+Borrar la carpeta `dist` (si existe) para volver a generarla con el comando
+
+```bash
+ng build
+```
+
+5. Subir este proyecto a un nuevo repositorio de github
+
+6. Luego desde **NetFly** basta con elegir el repositorio y el solo hace el build y publicar en el dominio que hemos seleccionado
