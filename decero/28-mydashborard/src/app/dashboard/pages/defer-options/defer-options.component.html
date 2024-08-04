@@ -1,0 +1,113 @@
+<app-title title="Defer Options" />
+
+<section>
+  <hr class="my-2" />
+
+
+  <!-- on interaction es para cuando el usuario interactua con el componente
+   es decir, cuando el usuario hace click en el div -->
+  @defer(on interaction){
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span>On interaction &nbsp;</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    Click en el div
+  </div>
+  }
+</section>
+
+
+<section>
+  <hr class="my-2" />
+
+  <button #btnInteraction
+   class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2">
+    Click Me
+  </button>
+
+  <!-- En este caso la interccion llega desde el click del boton -->
+  @defer(on interaction(btnInteraction)){
+  <app-heavy-loaders-fast cssClass="bg-cyan-500 h-20">
+    <span>On interaction &nbsp;</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    Click en el boton
+  </div>
+  }
+</section>
+
+
+<section>
+  <hr class="my-2" />
+
+  <!-- En este caso la interccion llega desde el hover del boton -->
+  @defer(on hover(btnInteraction)){
+  <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+    <span>On hover &nbsp;</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    Mouse over el boton
+  </div>
+  }
+</section>
+
+
+<section>
+  <hr class="my-2" />
+
+  <!-- on immediate significa que tan pronto pueda carga el elemento -->
+  @defer(on immediate){
+  <app-heavy-loaders-fast cssClass="bg-orange-200 h-20">
+    <span>On immediate &nbsp;</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    Se carga inmediatamente
+  </div>
+  }
+</section>
+
+
+
+<section>
+  <hr class="my-2" />
+
+  <!-- on immediate significa que tan pronto pueda carga el elemento -->
+  @defer(on timer(2000)){
+  <app-heavy-loaders-fast cssClass="bg-pink-200 h-20">
+    <span>On timer &nbsp;</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    En dos segundos
+  </div>
+  }
+</section>
+
+
+<section>
+  <hr class="my-2" />
+
+  <!-- on hover; prefetch on idle:  the content inside the <div>
+    will be loaded when the user hovers over the <div>,
+    or it will be prefetched when the browser is idle.  -->
+  @defer(on hover; prefetch on idle){
+  <app-heavy-loaders-fast cssClass="bg-lime-200 h-20">
+    <span>On hover, idle</span>
+  </app-heavy-loaders-fast>
+
+  } @placeholder {
+  <div class="w-full h-20 bg-purple-100">
+    Con el Javascript precargado, se ejecuta cuando haces Hover en el div
+  </div>
+  }
+</section>
+

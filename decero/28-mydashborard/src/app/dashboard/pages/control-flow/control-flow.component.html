@@ -1,0 +1,66 @@
+<app-title [title]="'Control Flow'"></app-title>
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-2xl font-bold mb-5">showContent: {{showContent()}}</h2>
+
+    <button class="p-2 bg-blue-500 rounded text-white" (click)="toggleContent()">
+      Click me!
+    </button>
+
+    @if(showContent()) {
+    <p class="mt-5">Click</p>
+    } @else {
+    <p class="mt-5">Unclick</p>
+    }
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+
+    <h2 class="text-2xl font-bold mb-5">grade: {{grade()}}</h2>
+    @switch (grade()) {
+    @case('A'){
+    <p class="mt-5">Excellent</p>
+    }
+    @case('B'){
+    <p class="mt-5">Good</p>
+    }
+    @case('C'){
+    <p class="mt-5">Fair</p>
+    }
+    @case('D'){
+    <p class="mt-5">Poor</p>
+    }
+    @case('F'){
+    <p class="mt-5">Fail</p>
+    }
+    @default {
+    <p class="mt-5">Invalid Grade</p>
+    }
+    }
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+      @for (item of frameworks(); track $index;
+      let i= $index,
+      count= $count,
+      odd= $odd, even= $even,
+      first= $first, last= $last) {
+      <li [class]="{'bg-pink-100': first, 'bg-blue-300': last, 'bg-orange-200': odd, 'bg-green-100': even}">
+        {{i+1 | number: '2.0' }}/{{count}} {{item}}</li>
+      }
+    </ul>
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+      @for (item of frameworks2024(); track $index) {
+      <li>{{item}}</li>
+      } @empty {
+      <li>No frameworks available for 2024</li>
+      }
+    </ul>
+  </div>
+</section>
