@@ -1,4 +1,4 @@
-import { User, UserResponse, UsersResponse } from "@interfaces/index";
+import { User, UsersResponse } from "@interfaces/index";
 import { HttpClient } from "@angular/common/http";
 import { computed, inject, Injectable, signal } from "@angular/core";
 import { State } from "@interfaces/index";
