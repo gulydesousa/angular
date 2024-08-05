@@ -1,49 +1,72 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  {path: 'dashboard',
+  {
+    path: 'dashboard',
     loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
-    children:[
-      {path: 'change-detection',
+    children: [
+      {
+        path: 'change-detection',
         title: 'Change Detection',
         loadComponent: () => import('./dashboard/pages/change-detection/change-detection.component').then(m => m.ChangeDetectionComponent)
       },
-      {path: 'control-flow',
+      {
+        path: 'control-flow',
         title: 'Control Flow',
         loadComponent: () => import('./dashboard/pages/control-flow/control-flow.component').then(m => m.ControlFlowComponent)
       },
-      {path: 'defer-options',
+      {
+        path: 'defer-options',
         title: 'Defer Options',
         loadComponent: () => import('./dashboard/pages/defer-options/defer-options.component').then(m => m.DeferOptionsComponent)
       },
-      {path: 'defer-views',
+      {
+        path: 'defer-views',
         title: 'Defer Views',
         loadComponent: () => import('./dashboard/pages/defer-views/defer-views.component').then(m => m.DeferViewsComponent)
       },
-      {path: 'user/:id',
+      {
+        path: 'user/:id',
         title: 'User View',
         loadComponent: () => import('./dashboard/pages/user/user.component').then(m => m.UserComponent)
       },
-      {path: 'user-list',
+      {
+        path: 'user-list',
         title: 'Users List',
         loadComponent: () => import('./dashboard/pages/users/users.component').then(m => m.UsersComponent)
       },
 
-      {path: 'view-transition',
+      {
+        path: 'view-transition',
         title: 'View Transition',
         loadComponent: () =>
           import('./dashboard/pages/view-transition/view-transition.component').then(m => m.ViewTransitionComponent)
       },
 
-      {path: 'view-transition-end',
+      {
+        path: 'view-transition-end',
         title: 'View Transition End',
         loadComponent: () =>
           import('./dashboard/pages/view-transition-end/view-transition-end.component').then(m => m.ViewTransitionEndComponent)
       },
+      {
+        path: 'inputs-outputs',
+        title: 'Inputs Outputs',
+        loadComponent: () =>
+          import('./dashboard/pages/input-output/input-output.component').then(m => m.InputOutputComponent)
+      },
 
-      {path: '',
-       redirectTo: 'control-flow',
-       pathMatch: 'full'
+      {
+        path: 'material',
+        title: 'Material 3',
+        loadComponent: () =>
+          import('./dashboard/pages/material/material.component').then(m => m.MaterialComponent)
+      },
+
+      {
+        path: '',
+        redirectTo: 'control-flow',
+        pathMatch: 'full'
       }
     ]
   },
