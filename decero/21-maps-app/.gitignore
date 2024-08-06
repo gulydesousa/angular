@@ -3,7 +3,7 @@
 #Porque cada desarrollador puede tener su propio archivo de configuración
 #Y no se debe subir al repositorio
 .env
-src/environments/environments.ts
+/src/environments/environment.ts
 
 # Compiled output
 /dist
