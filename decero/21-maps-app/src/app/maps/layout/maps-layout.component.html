@@ -1,10 +1,12 @@
 <!-- <side-menu/> -->
 <alone-menu />
 <router-outlet />
+
 @if(!this.isLocationReady())
 {
-  <app-loading></app-loading>
+<app-loading />
+
+}@else{
+
 }
-
-
-<app-angular-logo/>
+<app-angular-logo />

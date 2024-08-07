@@ -16,7 +16,8 @@ export class ZoomRangePageComponent implements AfterViewInit, OnDestroy {
     public currentCenter: LngLat = new LngLat(-3.7672, 40.2291);
 
     ngAfterViewInit(): void {
-      console.log(this.divMap);
+      if(typeof window == 'undefined' || typeof navigator == 'undefined') return;
+      //console.log(this.divMap);
 
       if(typeof document === 'undefined' || !this.divMap)
         throw new Error('No se pudo cargar el mapa');

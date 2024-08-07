@@ -17,9 +17,11 @@ import { environment } from '../../environments/environment';
 import { LoadingComponent } from './components/loading/loading.component';
 import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 import { AngularLogoComponent } from '../standalone/components/angular-logo/angular-logo.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 (mapboxgl as any).config.ACCESS_TOKEN = environment.mapbox_key;
-console.log('mapbox_key', environment.mapbox_key);
+//console.log('mapbox_key', environment.mapbox_key);
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ console.log('mapbox_key', environment.mapbox_key);
     PropertiesPageComponent,
     LoadingComponent,
     BtnMyLocationComponent,
+    SearchBarComponent,
+    SearchResultsComponent,
   ],
   imports: [
     CommonModule,

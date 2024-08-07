@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 
 import { Map, Popup, Marker } from "mapbox-gl";
-import { PlacesService } from "../../services";
+import { MapsService, PlacesService } from "../../services";
 
 @Component({
   selector: "full-screen-page",
@@ -19,13 +19,17 @@ import { PlacesService } from "../../services";
 export class FullScreenPageComponent implements AfterViewInit {
 
   private placesService = inject(PlacesService);
-  private isLocationReady = computed<boolean>(() => this.placesService.isLocationReady());
+  private mapService = inject(MapsService);
+  public isLocationReady = computed<boolean>(() => this.placesService.isLocationReady());
 
   //Recuperamos #map del html
   @ViewChild("map") divMap?: ElementRef;
   private map?: Map;
 
   ngAfterViewInit(): void {
+   if(typeof window == 'undefined' || typeof navigator == 'undefined') return;
+
+
     console.log(this.divMap);
 
     if (typeof document === "undefined" || !this.divMap)
@@ -49,21 +53,31 @@ export class FullScreenPageComponent implements AfterViewInit {
   //Efecto para mostrar la ubicación del usuario
   //Se ejecuta cada vez que cambia el valor de isLocationReady
   public test = effect(() => {
+
+    if (!this.isLocationReady()) return;
+
     //Si la ubicación del usuario está lista recentramos el mapa
-    if (this.isLocationReady()) {
-      console.log("Centrando mapa en ubicación del usuario");
-      this.map?.setCenter(this.placesService.userLocation!);
-    }
+    console.log("Centrando mapa en ubicación del usuario");
+    this.map?.setCenter(this.placesService.userLocation!);
+
     //Popup
     const popup = new Popup()
-    .setHTML(`
+      .setHTML(`
               <h6>Aquí estoy</h6>
               <span>Este es mi lugar en el mundo</span>
               `);
+
     //Marcador
-    const marker = new Marker({color: "blue"})
-    .setLngLat(this.placesService.userLocation!)
-    .setPopup(popup)
-    .addTo(this.map!);
+    const marker = new Marker({ color: "blue" })
+      .setLngLat(this.placesService.userLocation!)
+      .setPopup(popup)
+      .addTo(this.map!);
+
+    //MapService
+    this.mapService.setMap(this.map!);
+
   });
+
+
+
 }
