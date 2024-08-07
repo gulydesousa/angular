@@ -15,6 +15,8 @@ import { AloneComponent } from '../standalone/components/alone-component/alone-c
 import { AloneMenuComponent } from '../standalone/components/alone-menu/alone-menu.component';
 import { environment } from '../../environments/environment';
 import { LoadingComponent } from './components/loading/loading.component';
+import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
+import { AngularLogoComponent } from '../standalone/components/angular-logo/angular-logo.component';
 
 (mapboxgl as any).config.ACCESS_TOKEN = environment.mapbox_key;
 console.log('mapbox_key', environment.mapbox_key);
@@ -28,13 +30,15 @@ console.log('mapbox_key', environment.mapbox_key);
     MarkersPageComponent,
     ZoomRangePageComponent,
     PropertiesPageComponent,
-    LoadingComponent
+    LoadingComponent,
+    BtnMyLocationComponent,
   ],
   imports: [
     CommonModule,
     MapsRoutingModule,
     AloneComponent,
-    AloneMenuComponent
-  ]
+    AloneMenuComponent,
+    AngularLogoComponent
+]
 })
 export class MapsModule { }

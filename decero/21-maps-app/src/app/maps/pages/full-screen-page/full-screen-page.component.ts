@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from "@angular/core";
 
-import { Map } from "mapbox-gl";
+import { Map, Popup, Marker } from "mapbox-gl";
 import { PlacesService } from "../../services";
 
 @Component({
@@ -54,5 +54,16 @@ export class FullScreenPageComponent implements AfterViewInit {
       console.log("Centrando mapa en ubicación del usuario");
       this.map?.setCenter(this.placesService.userLocation!);
     }
+    //Popup
+    const popup = new Popup()
+    .setHTML(`
+              <h6>Aquí estoy</h6>
+              <span>Este es mi lugar en el mundo</span>
+              `);
+    //Marcador
+    const marker = new Marker({color: "blue"})
+    .setLngLat(this.placesService.userLocation!)
+    .setPopup(popup)
+    .addTo(this.map!);
   });
 }

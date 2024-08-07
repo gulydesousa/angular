@@ -1,6 +1,7 @@
 import { Component, computed, inject, OnInit } from "@angular/core";
 import { PlacesService } from "../services";
 
+
 @Component({
   templateUrl: "./maps-layout.component.html",
   styleUrl: "./maps-layout.component.scss",
