@@ -1,27 +1,21 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { PlacesApiClient, FeaturesApiClient } from "./../api";
+import { PlacesApiClient } from "../api/placesApiClient";
 import {
-  Feature, FeatureResponse, PlacesResponse, Suggestion,
+  PlacesResponse,
+  Suggestion,
 } from "../interfaces/places-response.interface";
 
 @Injectable({
   providedIn: "root",
 })
-
 export class PlacesService {
   private http = inject(PlacesApiClient);
-  private httpFeature = inject(FeaturesApiClient);
 
   public userLocation?: [number, number];
-
   private _isLocationReady = signal<boolean>(false);
   public isLocationReady = computed(() => this._isLocationReady());
-
   public isLoadingPlaces: boolean = false;
   public places: Suggestion[] = [];
-
-  //Señal para emitir los lugares encontrados
-  public features = signal<Feature[]>([]);
 
   public async getUserLocation(): Promise<[number, number]> {
     if (typeof navigator == "undefined" || !navigator.geolocation)
@@ -51,14 +45,7 @@ export class PlacesService {
 
   //Metodo para llamar la API de Mapbox que busca lugares
   async searchPlace(query: string = "") {
-    if (query.length === 0) {
-      this.features.set([]);
-      this.isLoadingPlaces = false;
-      this._isLocationReady.set(true);
-      this.places = [];
-      console.error("Query vacío");
-      return;
-    }
+    //todo: evaluar el caso de query vacío
 
     if (!this.userLocation) {
       console.error("No hay user location");
@@ -72,24 +59,6 @@ export class PlacesService {
     this.http.get<PlacesResponse>(url, params).subscribe((response) => {
       console.log(response.suggestions);
       this.places = response.suggestions;
-      this.isLoadingPlaces = false;
-    });
-  }
-
-  //Metodo para llamar la API de Mapbox que busca lugares
-  async pickLocation(mapid: string = "") {
-
-    if (!this.userLocation) {
-      console.error("No hay user location");
-      return;
-    }
-
-    this.isLoadingPlaces = true;
-    const params = { params: {} };
-
-    this.httpFeature.get<FeatureResponse>(mapid, params).subscribe((response) => {
-      console.log(response.features);
-      this.features.set(response.features);
       this.isLoadingPlaces = false;
     });
   }

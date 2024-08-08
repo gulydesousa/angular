@@ -29,14 +29,10 @@ export class FullScreenPageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
    if(typeof window == 'undefined' || typeof navigator == 'undefined') return;
 
-
-    console.log(this.divMap);
-
     if (typeof document === "undefined" || !this.divMap)
       throw new Error("No se pudo cargar el mapa");
 
     try {
-      console.log("Creando mapa");
       //Centramos el mapa en la ubicación del usuario
       this.map = new Map({
         container: this.divMap.nativeElement,

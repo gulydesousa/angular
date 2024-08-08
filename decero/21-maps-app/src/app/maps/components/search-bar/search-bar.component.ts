@@ -20,7 +20,7 @@ export class SearchBarComponent {
     }
     //Despues de 1/2 seg sin escribir, hago la llamada a la API
     this.debounceTimer = setTimeout(() => {
-      //Hago la llamada a la API
+      //Hago la llamada a la API si el string no esta vacio
       this,this.placesService.searchPlace(searchInput);
     }, 500);
 
