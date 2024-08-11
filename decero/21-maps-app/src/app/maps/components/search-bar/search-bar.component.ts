@@ -8,6 +8,7 @@ import { PlacesService } from '../../services';
 })
 export class SearchBarComponent {
 
+  public isListVisible: boolean = true;
   private placesService = inject(PlacesService);
 
   //Debouncer para no hacer llamadas a la API con cada tecla

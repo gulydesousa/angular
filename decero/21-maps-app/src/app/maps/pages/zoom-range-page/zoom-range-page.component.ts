@@ -51,16 +51,16 @@ export class ZoomRangePageComponent implements AfterViewInit, OnDestroy {
     try {
       // Aquí va el código que utiliza el objeto map
       map.on('zoom', (ev) => {
-        console.log('Zoom:', ev); //Imprime el evento de zoom
+        //console.log('Zoom:', ev); //Imprime el evento de zoom
         this.zoomLevel = map!.getZoom();
       });
 
       map.on('zoomend', (ev) => {
         //Cuando terminamos de hacer zoom preguntamos si el zoom es menor a 18
-        if (this.map!.getZoom() < 18) return;
-        this.map!.zoomTo(18); //Si es mayor a 18 hacemos zoom a 18
+        if (this.map!.getZoom() < 14) return;
+        this.map!.zoomTo(14); //Si es mayor a 18 hacemos zoom a 18
 
-        console.log('Zoom End:', map!.getZoom());
+        //console.log('Zoom End:', map!.getZoom());
       });
 
       map.on('move', (ev) => {
@@ -96,13 +96,16 @@ export class ZoomRangePageComponent implements AfterViewInit, OnDestroy {
 
   //Efecto para mostrar la ubicación del usuario
   //Se ejecuta cada vez que cambia el valor de isLocationReady
-  public test = effect(() => {
+  public posicionInicial = effect(() => {
 
     if (!this.isLocationReady()) return;
 
     //Si la ubicación del usuario está lista recentramos el mapa
     console.log("Centrando mapa en ubicación del usuario");
     this.map?.setCenter(this.placesService.userLocation!);
+
+    //Establecer los limites del mapa
+    this.mapService.fitBound(this.placesService.userLocation!);
 
     //Popup
     const popup = new Popup()
@@ -112,7 +115,7 @@ export class ZoomRangePageComponent implements AfterViewInit, OnDestroy {
               `);
 
     //Marcador
-    const marker = new Marker({ color: "blue" })
+    const marker = new Marker({ color: "red" })
       .setLngLat(this.placesService.userLocation!)
       .setPopup(popup)
       .addTo(this.map!);
@@ -121,9 +124,6 @@ export class ZoomRangePageComponent implements AfterViewInit, OnDestroy {
     this.mapService.setMap(this.map!);
 
   });
-
-
-
 }
 
 

@@ -5,20 +5,17 @@
 </div>
 }
 @else{
-
-@for(place of places; track place.mapbox_id){
-
-<ul class="list-group mt-2">
-  <li class="list-group-item list-group-item-action pointer active"
-    [class.active]="place.mapbox_id === this.selectedId"
-    (click)="flyTo(place)">
-    <h6>{{place.name}}</h6>
-    <p>{{place.full_address}}</p>
-    <button class="btn btn-sm"
-      [ngClass]="(place.mapbox_id==this.selectedId)? 'btn-outline-light':'btn-outline-primary'">
-      {{place.address}}
-    </button>
-  </li>
-</ul>
-}
+  @for(place of places; track place.mapbox_id){
+    <ul class="list-group mt-2">
+      <li class="list-group-item list-group-item-action pointer active" [class.active]="place.mapbox_id === this.selectedId"
+        (click)="flyTo(place)">
+        <h6>{{place.name}}</h6>
+        <p>{{place.full_address}}</p>
+        <button class="btn btn-sm"
+          [ngClass]="(place.mapbox_id==this.selectedId)? 'btn-outline-light':'btn-outline-primary'">
+          {{place.address}}
+        </button>
+      </li>
+    </ul>
+  }
 }

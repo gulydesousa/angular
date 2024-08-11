@@ -1,4 +1,4 @@
-import { Component, effect, inject } from "@angular/core";
+import { Component, effect, inject, Input } from "@angular/core";
 import { PlacesService, MapsService } from "../../services";
 import {  Suggestion,
 } from "../../interfaces/places-response.interface";
@@ -28,6 +28,7 @@ export class SearchResultsComponent {
     this.selectedId = place.mapbox_id;
     this.placesService.pickLocation(place.mapbox_id);
   }
+
 
   //Signal para la localizacion seleccionada
   //Selecciona la ubicación en el mapa para hacer el flyTo

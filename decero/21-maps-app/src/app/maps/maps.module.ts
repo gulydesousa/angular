@@ -45,4 +45,5 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     AngularLogoComponent
 ]
 })
+
 export class MapsModule { }
